@@ -1,0 +1,144 @@
+{
+    "id": {
+        "type": "Number",
+        "format": "uuid",
+        "required": true
+    },
+    "moments": {
+        "type": "Array",
+        "minItems": 5,
+        "maxItems": 5,
+        "prefixItems": [
+            {
+                "type": "Object",
+                "properties": {
+                    "title": {
+                        "type": "String",
+                        "maxLength": 100
+                    },
+                    "text": {
+                        "type": "String",
+                        "maxLength": 500
+                    },
+                    "tension": "Baixa",
+                    "motivations": {
+                        "type": "Array",
+                        "minItems": 3,
+                        "items": {
+                            "ref": {
+                                "type": "Number",
+                                "format": "uuid",
+                                "required": true
+                            }
+                        }
+                    },
+                    "phase": 1
+                }
+            },
+            {
+                "type": "Object",
+                "properties": {
+                    "title": {
+                        "type": "String",
+                        "maxLength": 100
+                    },
+                    "text": {
+                        "type": "String",
+                        "maxLength": 500
+                    },
+                    "tension": "Variável",
+                    "motivations": {
+                        "type": "Array",
+                        "minItems": 3,
+                        "items": {
+                            "ref": {
+                                "type": "Number",
+                                "format": "uuid",
+                                "required": true
+                            }
+                        }
+                    },
+                    "phase": 2
+                }
+            },
+            {
+                "type": "Object",
+                "properties": {
+                    "title": {
+                        "type": "String",
+                        "maxLength": 100
+                    },
+                    "text": {
+                        "type": "String",
+                        "maxLength": 500
+                    },
+                    "tension": "Crescente",
+                    "motivations": {
+                        "type": "Array",
+                        "minItems": 3,
+                        "items": {
+                            "ref": {
+                                "type": "Number",
+                                "format": "uuid",
+                                "required": true
+                            }
+                        }
+                    },
+                    "phase": 3
+                }
+            },
+            {
+                "type": "Object",
+                "properties": {
+                    "title": {
+                        "type": "String",
+                        "maxLength": 100
+                    },
+                    "text": {
+                        "type": "String",
+                        "maxLength": 500
+                    },
+                    "tension": "Alta",
+                    "motivations": {
+                        "type": "Array",
+                        "minItems": 3,
+                        "items": {
+                            "ref": {
+                                "type": "Number",
+                                "format": "uuid",
+                                "required": true
+                            }
+                        }
+                    },
+                    "phase": 3
+                }
+            },
+            {
+                "type": "Object",
+                "properties": {
+                    "title": {
+                        "type": "String",
+                        "maxLength": 100
+                    },
+                    "text": {
+                        "type": "String",
+                        "maxLength": 500
+                    },
+                    "tension": "Baixa",
+                    "motivations": {
+                        "type": "Array",
+                        "minItems": 3,
+                        "items": {
+                            "ref": {
+                                "type": "Number",
+                                "format": "uuid",
+                                "required": true
+                            }
+                        }
+                    },
+                    "phase": 4
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,87 @@
+### General Instruction ###
+Write a FICTIONAL narrative that serves as the gamification strategy for a real-world (RW) educational extracurricular activity.  The main objective of this story is to MOTIVATE participants to JOIN and ENGAGE in the RW initiative. 
+
+The narrative should follow a LINEAR temporality, unless the concept of time is essential and a central theme of the story. It should be CREATIVE and EASY TO READ, keeping the activity’s target audience in mind. The content must consider ALL the Activity Template Parameters (P) and STRICTLY ADHERE to the Narrative Elements (E) specified.
+
+The story should also be STRUCTURED into 5 distinct moments (M), each acting as a chapter in the journey, with different tension levels (TL). For each moment write:
+1) A SHORT, CREATIVE title (t) that captures the essence of the story chapter.
+2) The story text itself (s), providing an exploration of the mentioned narrative elements and story themes. The total word count for all five moments should be between 350 and 500 words.
+
+To relate the story to the gamification aspect, each moment of the story should also map to the Level 2 Octalysis 4 Phases (OP), focusing on player motivations.
+
+These are the 5 moments and their characteristics:
+
+M1 (Once Upon a Time)
+OP: DISCOVERY
+RW context: When participants question if they want to join the activity.
+TL: LOW
+Story Instructions: If there is a scenario, it should be set up here. Focus on worldbuilding.
+
+M2:
+OP: ONBOARDING
+RW context:  This is when participants, after deciding they want to join, learn about the rules and tools to engage in the activity.
+TL: VARIABLE
+Story Instructions: Create tension and present the core narrative challenge the protagonist(s) will have to face. If there is an element of suspense, or any secondary characters, present them here.
+
+M3:
+OP: SCAFFOLDING
+RW context: Its a phase where participants complete towards a goal.
+TL: CRESCENT
+Story Instructions: Use action verbs similar or equal to the ones used for describing the activity main objective (P2) and tasks (P3). Focus on ACTION and PROGRESSION of the plot while avoiding describing the actions in detail, since they take will gain form primarily in the RW context.
+
+M4: 
+OP: SCAFFOLDING
+RW context:  A more important and advanced phase of the activity when the participants are closer to achieving the main goal and are doing the main activity tasks.
+TL: MAXIMUM
+Story Instructions: The same for M3. The end of this story moment should be a CLIFFHANGER.
+
+M5:
+OP: ENDGAME
+RW context: This is the time to retain the participants and/or make an appeal to a cause.
+TL: LOW
+Story Instructions: If there is an element of suspense it should only be revealed here. The end of this moment, and the narrative, should be happy and positive. It shouldn’t be too much dependent on the success and material achievements of the protagonist(s). This ending can be of several times, multiple at once: moral, comic, revelatory, hopeful, an appeal, a warning, etc.
+
+Align and classify the Octalysis 8 Core Drives (OCD) with each moment of the story, assigning up to 3 points (pts) to each OCD. This is what each point means:
+0pts: The OCD is not relevant.
+1pt: The OCD is somewhat relevant.
+2pts: The OCD is important.
+3pts: The OCD is essential.
+
+In your response, provide the list of points assigned to each OCD, separated by commas, with each point corresponding to its relevant OCD. Consider the following order and definitions for each OCD:
+OCD1:  Epic Meaning & Calling: Motivation driven by the belief that one is contributing to something greater than oneself.
+OCD2: Development & Accomplishment: The intrinsic drive to make progress, develop skills, achieve mastery, and overcome challenges.
+OCD3: Empowerment of Creativity & Feedback: Engagement through creative exploration, experimentation, and the ability to test different approaches.
+OCD4: Ownership & Possession: Motivation derived from having control over something, including ownership of a process, project, and/or institution.
+OCD5: Social Influence & Relatedness: Encompasses all social motivators, such as mentorship, social acceptance, feedback, companionship, competition, etc.
+OCD6: Scarcity & Impatience: Motivation fueled by exclusivity, rarity, or the inability to access something immediately.
+OCD7: Unpredictability & Curiosity: Engagement driven by the excitement of not knowing what will happen next.
+OCD8: Loss & Avoidance: The desire to prevent negative outcomes or avoid undesirable consequences.
+
+Remember: Strive for a BALANCED approach by carefully weighing INTRINSIC vs. EXTRINSIC motivations, as well as balancing BLACK HAT vs. WHITE HAT gamification techniques.
+
+After the OCDs list, provide a detailed explanation of your reasoning process. Describe how you integrated the activity template parameters, pre-determined narrative elements, and the rationale behind assigning each point to the corresponding OCD for each moment in the story.
+
+Your final answer should be structured like:
+M1)
+t): ...
+s): ...
+OCDs) 1, 3, 2, 0, 1, 3, 2, 3
+Reasoning: ...
+
+M2)
+t): ...
+s): ...
+OCDs) 1, 3, 2, 0, 1, 3, 2, 3
+Reasoning: ...
+
+
+### Activity Template Parameters ###
+
+###  Narrative Elements ###
+
+
+
+
+
+
+

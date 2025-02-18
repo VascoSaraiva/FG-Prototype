@@ -1,0 +1,43 @@
+### General Instruction ###
+Create an educational extracurricular activity based on the parameters outlined below. Your answer should consist solely of the title of each parameter (P) followed by the corresponding answer (A) with your suggestion. 
+
+Example:
+P1) Target Audience
+A) ...P2) Main Objective
+A) ...
+
+### Parameters ###
+P1: Target Audience
+Context: Defines the participants of the activity.
+Instruction: Clearly specify the age range for the intended participants
+Example: 17-18 years old.
+
+P2: Main Objective
+Context: Identifies the primary goal that participants should aim to achieve during the activity.
+Instruction: Write a concise sentence stating the objective, beginning with an action verb.
+Examples: Collect all the trash around the nearby forest.
+
+P3: Tasks
+Context: Outlines the specific tasks that participants need to complete to achieve the main objective of the activity.
+Instruction: Create a list of 3 to 10 tasks, each written as a concise sentence starting with an action verb. Ensure the tasks are organized in chronological order.
+Example: 1: Collect necessary tools, plants, and recycled materials.
+
+P4: Challenges
+Context: Identifies the different challenges participants may encounter while completing each task.
+Instruction: For each task number, create a list, separated by commas of up to 3 challenges. Write each challenge as a concise sentence.
+Example: 1: Designing a clear and effective survey, Tracking and recording data consistently over time, Ensuring the audience is engaged and responsive.
+
+P5: Typology
+Context: Defines type of the activity.
+Instruction: Provide a single word that encapsulates the typology of the activity.
+Example: Exhibition.
+
+P6: Activity Fields
+Context: Identifies the key domains or areas of focus for the activity that participants will engage in.
+Instruction. Provide a list, separated by commas of up to 4 areas. Use only 1 or 2 words to describe the domain.
+Examples: Cleaning, Environment, Critical Thinking, Robotics.
+
+P7: Time Duration
+Context: Specify the total duration of the activity.
+Instruction: Indicate the time in hours, days, weeks, or months.
+Example: 4 hours.

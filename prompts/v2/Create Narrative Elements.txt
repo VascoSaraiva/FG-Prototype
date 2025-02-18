@@ -1,0 +1,46 @@
+### General Instruction ###
+Using the provided extracurricular activity template, create the following narrative elements for a gamified fictional story. Be CREATIVE and ORIGINAL in all your ideas, ensuring they resonate with the activity’s target audience. Your response should include only the title of each element (E) followed by the corresponding answer (A) with your suggestion. You may choose to omit any elements that are not required, without any penalty.
+
+Example:
+E1) Genre
+A) ...
+
+E2) High Concept:
+A) ...
+
+E3) Scenario
+A) null
+
+### Elements ###
+E1: Genre
+Context: The literary genre of the story. ONLY CONSIDER these types of genre: Fantasy, Science Fiction, Mystery, Noir, History, Dystopia, Utopia, Horror, Comedy, Epic, Poetry, Fable, Thriller, Western, Journalism.
+Instruction: Write a mix of two genres from above. Be UNPREDICATABLE.
+Example: Western + Journalism
+
+E2: High Concept
+Required: YES
+Context: A catchy idea, written as a question that contains the main concept of the story.
+Instruction: Write a SHORT, CONSISE and UNIQUE “What if...” question.
+
+E3: Scenario
+Required: NO
+Context:  Defines the place(s) where the story will unfold, establishing the general atmosphere of the narrative. The scenario(s) SHOUD BE ESSENTIAL to the story; if excluded, the narrative may lose its meaning. Ideally, there should be only 1 narrative scenario (unity of place), with a maximum of 3.
+Instruction: Specify each scenario with 1 or 2 words, followed by a short paragraph of 1-2 sentences describing the place.
+Example: Water City: A vibrant metropolis built on a network of canals, where colorful boats glide through the shimmering waters, and the air is filled with the sounds of laughter and music from the bustling markets along the shore.
+
+E4: ProtagonistRequired: YES
+Context: The protagonist of the story can take one of three forms. It may be (1) "Me," representing the activity participant either metaphorically or literally, without any physical or psychological description. It can also be (2) "We," portraying a group of participants in a similar way, with minimal or nonexistent psychological descriptions. Lastly, it may be (3) "He/She/They," referring to a character or characters who may or may not represent someone from the real world, also without any physical or psychological description. Regardless of the chosen type, relevant objects, clothing, or accessories can be described.
+Instruction: Specify the protagonist type number followed by a short paragraph with a sentence explaining who the protagonist is. Separate both pieces of information with a colon.
+Example: 3: Carlos is a space cowboy tasked with tracking down bounty hunters across the universe.
+
+E5: Secondary Characters
+Required: NO
+Context: Characters that serve the plot and the themes of the story. The story should have to 2 characters maximum. They can one of 3 types: (1) Adversary or enemies to the protagonist and their mission; (2) Needy, if they need help from the protagonist; (3) Helpers, if they collaborate to help the protagonist achieve their goals.
+
+E6: Narrator Type
+Required: YES
+Context: The narrator of the story. The narrative should contain ONLY 1 narrator with 1 voice tone. A narrator can be one of 2 types: (1) Heterodiegetic (2) Homodiegetic. If it’s a homodiegetic narrator, they should be one of the secondary characters (if they exist) or a protagonist of type (3). If the narrator is a character in the story, their voice tone should fit the characteristics of the character.
+Instruction: Specify the number of the narrator type and write a CONSISE and SHORT sentence of who they are. Separate both pieces of information with a colon.
+Examples: 1: Heterodiegetic, an omniscient narrator who recounts the events unfolding in Cyber City.2: Homodiegetic: The Alien sister, telling her experience.
+### Activity Template ###
+This template consists of multiple parameters (P), each paired with a corresponding item (I). Use this information to craft the narrative elements, ensuring they create a metaphorical representation of the activity.
