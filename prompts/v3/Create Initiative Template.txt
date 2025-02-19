@@ -16,12 +16,6 @@ Estes são os números associados a cada core drive da Octalysis:
 7: Umpredictability & Curiosity
 8: Loss & Avoidance
 
-Estes são os números associados a cada fase do Level 2 Octalysis:
-1: Discovery
-2: Onboarding
-3: Scaffholding
-4: Endgame
-
 {
     "type": "object",
     "properties": {
@@ -29,58 +23,119 @@ Estes são os números associados a cada fase do Level 2 Octalysis:
             "type": "string",
             "format": "uuid"
         },
-        "title": {
-            "type": "string",
-            "maxLength": 100,
-            "description": "Deve ser um título objetivo, não demasiado generalista, que sugere a temática da atividade."
-        },
-        "objective": {
-            "type": "object",
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "maxLength": 80,
-                    "description": "O objetivo que os participantes irão ter de alcançar na atividade. Escreve uma frase curta e de fácil compreensão que comece por um verbo de ação. O objetivo deve ser algo concreto e específico. Não deve ser demasiado genérico nem demasiado ambicioso."
-                },
-                "verb": {
-                    "type": "string",
-                    "description": "O verbo de ação associado ao objetivo. Deve ser um verbo que indique o que os participantes terão de realizar."
-                }
-            },
-            "required": [
-                "title",
-                "verb"
+        "audience": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 2,
+            "enum": [
+                "Ensino Básico",
+                "Ensino Secundário",
+                "Ensino Superior",
+                "Pós-Graduação"
             ]
         },
-        "audience": {
-            "type": "object",
-            "properties": {
-                "start": {
-                    "type": "number",
-                    "minimum": 12,
-                    "maximum": 100
-                },
-                "end": {
-                    "type": "number",
-                    "minimum": 12,
-                    "maximum": 100
-                }
-            }
+        "title": {
+            "type": "string",
+            "maxLength": 60,
+            "description": "Deve ser um título objetivo, super especifíco."
         },
         "typology": {
             "type": "string",
-            "maxLength": 10,
-            "enum": ["Concurso", "Exposição", "Campeonato", "Mentoria", "Workshop", "Projeto", "Conferência", "Voluntariado", "Visita de Estudo", "Palestra", "Celebração", "Reunião", "Laboratório", "Investigação", "Experiência", "Festival", "Feira", "Maratona"]
+            "enum": [
+                "Concurso",
+                "Exposição",
+                "Mentoria",
+                "Workshop",
+                "Conferência",
+                "Voluntariado",
+                "Palestra",
+                "Celebração",
+                "Reunião",
+                "Investigação",
+                "Festival",
+                "Feira",
+                "Maratona",
+                "Projeto"
+            ]
         },
         "areas": {
             "type": "array",
             "minItems": 3,
             "maxItems": 5,
-            "description": "As áreas ou domínios de conhecimento que estão relacionados com a atividade. Indica as áreas ou domínios de conhecimento que os participantes irão explorar e desenvolver durante a atividade.",
+            "description": "As áreas do conhecimento relacionadas com a atividade. Irão ser exploradas e desenvolvidas pelos participantes durante a atividade.",
             "items": {
                 "type": "string",
                 "maxLength": 70
             }
+        },
+        "objective": {
+            "type": "object",
+            "properties": {
+                "verb": {
+                    "type": "string",
+                    "description": "O verbo de ação que anuncia o objetivo principal da atividade.",
+                    "enum": [
+                        "Criar",
+                        "Desenvolver",
+                        "Construir",
+                        "Desenhar",
+                        "Inovar",
+                        "Investigar",
+                        "Explorar",
+                        "Aprender",
+                        "Partilhar",
+                        "Comunicar",
+                        "Resolver",
+                        "Descobrir",
+                        "Conhecer",
+                        "Experimentar",
+                        "Organizar",
+                        "Apresentar",
+                        "Promover",
+                        "Refletir",
+                        "Pensar",
+                        "Questionar",
+                        "Analisar",
+                        "Compreender",
+                        "Avaliar",
+                        "Melhorar",
+                        "Ajudar",
+                        "Colaborar",
+                        "Cooperar",
+                        "Participar",
+                        "Integrar",
+                        "Incluir",
+                        "Envolver",
+                        "Motivar",
+                        "Inspirar",
+                        "Desafiar",
+                        "Estimular",
+                        "Fomentar",
+                        "Encorajar",
+                        "Incentivar",
+                        "Impulsionar",
+                        "Potenciar",
+                        "Fortalecer",
+                        "Habilitar",
+                        "Treinar",
+                        "Formar",
+                        "Educar",
+                        "Ensinar",
+                        "Orientar",
+                        "Guiar",
+                        "Aconselhar",
+                        "Acompanhar"
+                    ]
+                },
+                "title": {
+                    "type": "string",
+                    "maxLength": 70,
+                    "description": "O objetivo principal que os participantes irão ter de alcançar. A frase deve começar pelo verbo escolhido. Deve ser uma ideia muito original, diferenciadora e aplicável num contexto do mundo real."
+                }
+            },
+            "required": [
+                "title"
+            ]
         },
         "duration": {
             "type": "object",
@@ -101,84 +156,105 @@ Estes são os números associados a cada fase do Level 2 Octalysis:
         },
         "desc": {
             "type": "string",
-            "maxLength": 350
+            "maxLength": 400,
+            "description": "Um parágrafo capaz de responder às perguntas: O quê? Quando? Onde? Como? Porquê?"
         },
         "tasks": {
-            "type": "array",
-            "minItems": 5,
-            "maxItems": 10,
-            "description": "Lista de tarefas que os participantes deverão realizar para alcançar o objetivo da atividade. Devem estar de acordo com a tipologia da atividade. As tarefas devem ser organizadas por ordem cronológica e sequencial, com as fases da Octalysis também apresentadas de forma sequencial, começando sempre pela fase 1 e terminando na fase 4. Assegura-te que a maioria das tarefas tem ligação à fase 3 do Level 2 Octalysis. Cada tarefa deve ser descrita de forma clara, objetiva e específica, indicando exatamente o que os participantes precisam fazer e evitando ser demasiado generalista. As tarefas devem ser desafiantes e motivadoras, mas também realistas e exequíveis.",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "title": {
-                        "type": "string",
-                        "maxLength": 60,
-                        "description": "O título da tarefa deve ser curto e objetivo, indicando claramente o que os participantes terão de realizar. A frase deve ter apenas um único verbo, que deve estar presente no ínicio da frase. Evitar colocar duas tarefas juntas numa só."
-                    },
-                    "verb": {
-                        "type": "string",
-                        "description": "O verbo de ação associado à tarefa. Deve ser um verbo utilizado no ínicio da frase anterior."
-                    },
-                    "desc": {
-                        "type": "string",
-                        "maxLength": 350
-                    },
-                    "motivations": {
-                        "type": "array",
-                        "minItems": 3,
-                        "description": "Lista de motivações que justificam a realização da tarefa. As motivações devem ser claras e objetivas, indicando a importância e o propósito da tarefa. As motivações devem ser relevantes e significativas para os participantes, de forma a promover a sua motivação e envolvimento na atividade.",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "type": "string",
-                                    "format": "uuid"
-                                },
-                                "tought": {
-                                    "type": "string",
-                                    "maxLength": 60,
-                                    "description": "O pensamento que os participantes devem ter para realizar a tarefa. Deve ser expresso sob a forma de uma condição:'Se ... então...'."
-                                },
-                                "coreDrive": {
-                                    "type": "integer",
-                                    "enum": [
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8
-                                    ]
-                                }
+            "type": "object",
+            "description": "Tarefas que os participantes vão realizar para alcançar o objetivo da atividade. Cada tarefa está associada a uma fase do Level 2 Octalysis. Apresenta as tarefas de forma sequencial e cronológica. Cada tarefa deve ser descrita de forma clara, objetiva e altamente específica.",
+            "properties": {
+                "Discovery": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "title": {
+                                "type": "string",
+                                "maxLength": 60,
+                                "description": "O título da tarefa deve ser objetivo, indicando claramente o que os participantes terão de realizar. A frase deve ter apenas um único verbo, que deve estar presente no ínicio da frase. Evitar colocar duas tarefas juntas numa só. Deve responder à pergunta: O que vou fazer em concreto?"
                             },
-                            "required": [
-                                "id",
-                                "desc",
-                                "coreDrive"
-                            ]
-                        }
-                    },
-                    "phase": {
-                        "type": "integer",
-                        "enum": [
-                            1,
-                            2,
-                            3,
-                            4
+                            "verb": {
+                                "type": "string",
+                                "description": "Indica o verbo de ação associado à tarefa, utilizado no ínicio da frase anterior."
+                            },
+                            "desc": {
+                                "type": "string",
+                                "maxLength": 350
+                            },
+                            "motivations": {
+                                "type": "array",
+                                "minItems": 2,
+                                "description": "Deve responder à pergunta: O que motivará o participante a realizar esta tarefa?",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                        },
+                                        "tought": {
+                                            "type": "string",
+                                            "maxLength": 60,
+                                            "description": "O pensamento por trás da motivação de um participante. Deve ser expresso sob a forma de uma condição:'Se ... então...'."
+                                        },
+                                        "coreDrive": {
+                                            "type": "integer",
+                                            "enum": [
+                                                1,
+                                                2,
+                                                3,
+                                                4,
+                                                5,
+                                                6,
+                                                7,
+                                                8
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "tought",
+                                        "coreDrive"
+                                    ]
+                                },
+                                "required": [
+                                    "title",
+                                    "verb",
+                                    "desc",
+                                    "motivations"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "title",
+                            "desc",
+                            "motivations"
                         ]
                     }
                 },
-                "required": [
-                    "title",
-                    "verb",
-                    "desc",
-                    "motivations",
-                    "phase"
-                ]
-            }
+                "Onboarding": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {}
+                },
+                "Scaffolding": {
+                    "type": "array",
+                    "minItems": 2,
+                    "items": {}
+                },
+                "Endgame": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {}
+                }
+            },
+            "required": [
+                "Discovery",
+                "Onboarding",
+                "Scaffolding",
+                "Endgame"
+            ]
         }
     },
     "required": [

@@ -18,12 +18,11 @@
         },
         "title": {
             "type": "string",
-            "maxLength": 100,
-            "description": "Deve ser um título objetivo, super especfício, que sugere a temática da atividade."
+            "maxLength": 60,
+            "description": "Deve ser um título objetivo, super especifíco."
         },
         "typology": {
             "type": "string",
-            "maxLength": 10,
             "enum": [
                 "Concurso",
                 "Exposição",
@@ -45,7 +44,7 @@
             "type": "array",
             "minItems": 3,
             "maxItems": 5,
-            "description": "As áreas ou domínios de conhecimento que estão relacionados com a atividade. Indica as áreas ou domínios de conhecimento que os participantes irão explorar e desenvolver durante a atividade.",
+            "description": "As áreas do conhecimento relacionadas com a atividade. Irão ser exploradas e desenvolvidas pelos participantes durante a atividade.",
             "items": {
                 "type": "string",
                 "maxLength": 70
@@ -54,20 +53,70 @@
         "objective": {
             "type": "object",
             "properties": {
-                "title": {
-                    "type": "string",
-                    "maxLength": 80,
-                    "description": "O objetivo que os participantes irão ter de alcançar na atividade. A frase deve começar por um verbo de ação. O objetivo deve ser algo concreto, super específico e original. Não pode ser genérico."
-
-                },
                 "verb": {
                     "type": "string",
-                    "description": "O verbo de ação associado ao objetivo. Deve ser um verbo que indique o que os participantes terão de realizar."
+                    "description": "O verbo de ação que anuncia o objetivo principal da atividade.",
+                    "enum": [
+                        "Criar",
+                        "Desenvolver",
+                        "Construir",
+                        "Desenhar",
+                        "Inovar",
+                        "Investigar",
+                        "Explorar",
+                        "Aprender",
+                        "Partilhar",
+                        "Comunicar",
+                        "Resolver",
+                        "Descobrir",
+                        "Conhecer",
+                        "Experimentar",
+                        "Organizar",
+                        "Apresentar",
+                        "Promover",
+                        "Refletir",
+                        "Pensar",
+                        "Questionar",
+                        "Analisar",
+                        "Compreender",
+                        "Avaliar",
+                        "Melhorar",
+                        "Ajudar",
+                        "Colaborar",
+                        "Cooperar",
+                        "Participar",
+                        "Integrar",
+                        "Incluir",
+                        "Envolver",
+                        "Motivar",
+                        "Inspirar",
+                        "Desafiar",
+                        "Estimular",
+                        "Fomentar",
+                        "Encorajar",
+                        "Incentivar",
+                        "Impulsionar",
+                        "Potenciar",
+                        "Fortalecer",
+                        "Habilitar",
+                        "Treinar",
+                        "Formar",
+                        "Educar",
+                        "Ensinar",
+                        "Orientar",
+                        "Guiar",
+                        "Aconselhar",
+                        "Acompanhar"
+                    ]
+                },
+                "title": {
+                    "type": "string",
+                    "maxLength": 70,
+                    "description": "O objetivo principal que os participantes irão ter de alcançar. A frase deve começar pelo verbo escolhido. Deve ser uma ideia muito original, diferenciadora e aplicável num contexto do mundo real."
                 }
             },
             "required": [
-                "title",
-                "verb"
+                "title"
             ]
         },
         "duration": {
@@ -89,11 +138,12 @@
         },
         "desc": {
             "type": "string",
-            "maxLength": 350
+            "maxLength": 400,
+            "description": "Um parágrafo capaz de responder às perguntas: O quê? Quando? Onde? Como? Porquê?"
         },
         "tasks": {
             "type": "object",
-            "description": "Tarefas que os participantes vão realizar para alcançar o objetivo da atividade. Cada tarefa está associada a uma fase do Level 2 Octalysis. Apresenta as tarefas de forma sequencial e cronológica. Cada tarefa deve ser descrita de forma clara, objetiva e específica, indicando exatamente o que os participantes precisam fazer e evitando ser demasiado generalista. As tarefas devem ser desafiantes e motivadoras, mas também realistas e exequíveis.",
+            "description": "Tarefas que os participantes vão realizar para alcançar o objetivo da atividade. Cada tarefa está associada a uma fase do Level 2 Octalysis. Apresenta as tarefas de forma sequencial e cronológica. Cada tarefa deve ser descrita de forma clara, objetiva e altamente específica.",
             "properties": {
                 "Discovery": {
                     "type": "array",
@@ -104,11 +154,11 @@
                             "title": {
                                 "type": "string",
                                 "maxLength": 60,
-                                "description": "O título da tarefa deve ser curto e objetivo, indicando claramente o que os participantes terão de realizar. A frase deve ter apenas um único verbo, que deve estar presente no ínicio da frase. Evitar colocar duas tarefas juntas numa só. Deve responder à pergunta: O que vou fazer em concreto?"
+                                "description": "O título da tarefa deve ser objetivo, indicando claramente o que os participantes terão de realizar. A frase deve ter apenas um único verbo, que deve estar presente no ínicio da frase. Evitar colocar duas tarefas juntas numa só. Deve responder à pergunta: O que vou fazer em concreto?"
                             },
                             "verb": {
                                 "type": "string",
-                                "description": "O verbo de ação associado à tarefa. Deve ser um verbo utilizado no ínicio da frase anterior."
+                                "description": "Indica o verbo de ação associado à tarefa, utilizado no ínicio da frase anterior."
                             },
                             "desc": {
                                 "type": "string",
@@ -116,8 +166,8 @@
                             },
                             "motivations": {
                                 "type": "array",
-                                "minItems": 3,
-                                "description": "Motivações que justificam a realização da tarefa por parte dos participantes. Devem ser claras e objetivas, indicando a importância e o propósito da tarefa.",
+                                "minItems": 2,
+                                "description": "Deve responder à pergunta: O que motivará o participante a realizar esta tarefa?",
                                 "items": {
                                     "type": "object",
                                     "properties": {
@@ -128,7 +178,7 @@
                                         "tought": {
                                             "type": "string",
                                             "maxLength": 60,
-                                            "description": "O pensamento que os participantes devem ter para realizar a tarefa. Deve ser expresso sob a forma de uma condição:'Se ... então...'."
+                                            "description": "O pensamento por trás da motivação de um participante. Deve ser expresso sob a forma de uma condição:'Se ... então...'."
                                         },
                                         "coreDrive": {
                                             "type": "integer",
@@ -160,7 +210,6 @@
                         },
                         "required": [
                             "title",
-                            "verb",
                             "desc",
                             "motivations"
                         ]
