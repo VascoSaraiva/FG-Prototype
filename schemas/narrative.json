@@ -1,14 +1,13 @@
 {
-    "id": {
-        "type": "Number",
-        "format": "uuid",
-        "required": true
-    },
-    "moments": {
-        "type": "Array",
-        "minItems": 5,
-        "maxItems": 5,
-        "prefixItems": [
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "number",
+            "format": "uuid"
+        },
+        "moments": {
+            "type": "array",
+            "prefixItems": [
             {
                 "type": "Object",
                 "properties": {
@@ -20,125 +19,61 @@
                         "type": "String",
                         "maxLength": 500
                     },
-                    "tension": "Baixa",
                     "motivations": {
                         "type": "Array",
                         "minItems": 3,
                         "items": {
                             "ref": {
                                 "type": "Number",
-                                "format": "uuid",
-                                "required": true
+                                "format": "uuid"
                             }
                         }
                     },
-                    "phase": 1
+                    "tension": "Baixa",
+                    "phase": "Discovery"
                 }
             },
             {
                 "type": "Object",
                 "properties": {
-                    "title": {
-                        "type": "String",
-                        "maxLength": 100
-                    },
-                    "text": {
-                        "type": "String",
-                        "maxLength": 500
-                    },
+                    "title": {},
+                    "text": {},
+                    "motivations": {},
                     "tension": "Variável",
-                    "motivations": {
-                        "type": "Array",
-                        "minItems": 3,
-                        "items": {
-                            "ref": {
-                                "type": "Number",
-                                "format": "uuid",
-                                "required": true
-                            }
-                        }
-                    },
-                    "phase": 2
+                    "phase": "Onboarding"
                 }
             },
             {
                 "type": "Object",
                 "properties": {
-                    "title": {
-                        "type": "String",
-                        "maxLength": 100
-                    },
-                    "text": {
-                        "type": "String",
-                        "maxLength": 500
-                    },
+                    "title": {},
+                    "text": {},
+                    "motivations": {},
                     "tension": "Crescente",
-                    "motivations": {
-                        "type": "Array",
-                        "minItems": 3,
-                        "items": {
-                            "ref": {
-                                "type": "Number",
-                                "format": "uuid",
-                                "required": true
-                            }
-                        }
-                    },
-                    "phase": 3
+                    "phase": "Scaffholding"
                 }
             },
             {
                 "type": "Object",
                 "properties": {
-                    "title": {
-                        "type": "String",
-                        "maxLength": 100
-                    },
-                    "text": {
-                        "type": "String",
-                        "maxLength": 500
-                    },
+                    "title": {},
+                    "text": {},
+                    "motivations": {},
                     "tension": "Alta",
-                    "motivations": {
-                        "type": "Array",
-                        "minItems": 3,
-                        "items": {
-                            "ref": {
-                                "type": "Number",
-                                "format": "uuid",
-                                "required": true
-                            }
-                        }
-                    },
-                    "phase": 3
+                    "phase": "Scaffholding"
                 }
             },
             {
                 "type": "Object",
                 "properties": {
-                    "title": {
-                        "type": "String",
-                        "maxLength": 100
-                    },
-                    "text": {
-                        "type": "String",
-                        "maxLength": 500
-                    },
-                    "tension": "Baixa",
-                    "motivations": {
-                        "type": "Array",
-                        "minItems": 3,
-                        "items": {
-                            "ref": {
-                                "type": "Number",
-                                "format": "uuid",
-                                "required": true
-                            }
-                        }
-                    },
-                    "phase": 4
+                    "title": {},
+                    "text": {},
+                    "motivations": {},
+                    "tension": "Alta",
+                    "phase": "Endgame"
                 }
             }
         ]
+        }
     }
 }
