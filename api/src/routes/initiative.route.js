@@ -1,14 +1,11 @@
 const express = require('express');
 const validate = require('../middlewares/validate');
-const initiativeValidation = require('../validations/initiative.validation');
 const initiativeController = require('../controllers/initiative.controller');
+const initiativeValidation = require('../validations/initiative.validation');
 
 const router = express.Router();
 
-router
-    .route('/')
-    .get(initiativeController.getInitiative)
-
+router.get('/elements', initiativeController.getInitiativeElements)
 
 module.exports = router;
 

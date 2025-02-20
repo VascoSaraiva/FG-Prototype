@@ -4,24 +4,21 @@ const badgesRoute = require('./badge.route');
 const narrativeRoute = require('./narrative.route');
 const config = require('../config/config');
 
-
 const router = express.Router();
-
-console.log(router.use)
 
 const routes = [
     {
         path: '/i',
         route: initiativesRoute
     },
-    // {
-    //     path: '/b',
-    //     route: badgesRoute
-    // },
-    // {
-    //     path: '/n',
-    //     route: narrativeRoute
-    // }
+    {
+        path: '/n',
+        route: narrativeRoute
+    },
+    {
+        path: '/b',
+        route: badgesRoute
+    },
 
 ];
 

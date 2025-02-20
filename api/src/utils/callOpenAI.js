@@ -8,7 +8,7 @@ const {
 } = config.ai
 
 const client = new OpenAI({
-    baseUrl: endpoint,
+    baseURL: endpoint,
     apiKey: token,
 });
 
@@ -31,12 +31,11 @@ async function callOpenAI(system, message) {
             },
         ],
         temperature: options.temperature,
-        topP: options.topP,
-        maxTokens: options.maxTokens,
+        top_p: options.topP,
+        max_tokens: options.maxTokens,
         model: options.modelName,
     })
 
-    console.log(response)
     return response.choices[0].message.content;
 }
 

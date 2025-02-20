@@ -27,9 +27,9 @@ module.exports = {
         token: envVars.GITHUB_TOKEN,
         endpoint: envVars.AZURE_ENDPOINT,
         options: {
-            temperature: 1.0,
-            topP: 1.0,
-            maxTokens: 1000,
+            temperature: 1.15,
+            top_p: 1.0,
+            max_tokens: 1000,
             modelName: 'gpt-4o-mini',
         }
     },
