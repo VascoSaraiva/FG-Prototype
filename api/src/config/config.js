@@ -35,6 +35,8 @@ module.exports = {
     },
     mongoose: {
         url: envVars.MONGO_URL,
-        options: {},
+        options: {
+            serverSelectionTimeoutMS: 5000 // Timeout for trying to establish a connection to the MongoDB server
+        },
     },
 }
