@@ -1,0 +1,252 @@
+### System Prompt ###
+És um escritor de Portugal de {genres}. O teu público-alvo são contextos educativos, nomeadamente: alunos de {audience}. Os teus conhecimentos sobre a framework Octalysis de Chou permitem-te criar narrativas gamificadas: histórias que motivam os participantes ao longo de uma atividade extracurricular e que funcionam como metáforas às tarefas e desafios da vida real.
+
+### Prompt ###
+Criar os elementos narrativos que podem vir a integrar uma narrativa gamificada para a seguinte atividade:
+
+{JSON}
+
+ Baseia-te no schema de JSON abaixo para gerares a tua resposta, que deve consistir apenas num único JSON final.
+
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "highConcept": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "Uma frase começada por 'E se...?' que vende o conceito da história. Imagina-te a apresentar a ideia a um grupo de investidores altamente rigorosos que só acreditam nas ideias mais originais e diferentes."
+        },
+        "conflict": {
+            "type": "string",
+            "maxLength": 100
+        },
+        "title": {
+            "type": "string",
+            "maxLength": 100
+        },
+        "protagonist": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "O participante",
+                        "O grupo de participantes",
+                        "Um personagem externo/a"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "maxLength": 50,
+                    "description": "Apenas pode ser especificado se o protagonista for um personagem externo."
+                },
+                "description": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "description": "A descrição do protagonista não deve incluir detalhes psicológicos ou estéticos mas sim a sua função na narrativa. Podem ser descritos objetos, roupas ou acessórios essenciais para a compreensão da narrativa."
+                },
+                "motivations": {
+                    "type": "array",
+                    "minItems": 12,
+                    "description": "As motivações que levam o(s) protagonista(s) à ação dentro da história.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "format": "uuid"
+                            },
+                            "desc": {
+                                "type": "string",
+                                "maxLength": 100
+                            },
+                            "ref": {
+                                "type": "string",
+                                "format": "uuid",
+                                "description": "O id da motivação real a que esta motivação serve como metáfora ficcional."
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "desc",
+                            "ref"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "description",
+                "motivations"
+            ]
+        },
+        "characters": {
+            "type": "array",
+            "maxItems": 2,
+            "description": "Personagens secundários que servem o plot e a temática da narrativa.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "Inimigo",
+                            "Necessitado",
+                            "Colaborador",
+                            "Inimigos",
+                            "Necesitados",
+                            "Colaboradores",
+                            "Inimiga",
+                            "Necessitada",
+                            "Colaboradora",
+                            "Inimigas",
+                            "Necessitadas",
+                            "Colaboradoras"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "maxLength": 50
+                    },
+                    "desc": {
+                        "type": "string",
+                        "maxLength": 100,
+                        "description": "A descrição deve ser mínima e objetiva, focando-se na função do personagem na narrativa."
+                    },
+                    "required": [
+                        "type",
+                        "name",
+                        "desc"
+                    ]
+                }
+            }
+        },
+        "scenario": {
+            "type": "array",
+            "maxItems": 3,
+            "description": "Cenário(s) onde decorre a narrativa. Se especificados, devem ser essenciais à história. Idealmente deve existir apenas um único cenário.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "Local",
+                            "Temporal",
+                            "Social"
+                        ]
+                    },
+                    "title": {
+                        "type": "string",
+                        "maxLength": 50
+                    },
+                    "desc": {
+                        "type": "string",
+                        "maxLength": 300
+                    },
+                    "required": [
+                        "type",
+                        "title",
+                        "desc"
+                    ]
+                }
+            }
+        },
+        "genre": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "Faz uma combinação altamente improvável entre dois géneros",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "Fantasia",
+                    "Ficção Ciêntifica",
+                    "Mistério",
+                    "Noir",
+                    "História",
+                    "Distopia",
+                    "Utopia",
+                    "Terror",
+                    "Romance",
+                    "Comédia",
+                    "Thriller",
+                    "Western",
+                    "Épico",
+                    "Poesia",
+                    "Fábula",
+                    "Reportagem",
+                    "Aventura",
+                    "Realismo"
+                ]
+            }
+        },
+        "narrator": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "Heterodiegético",
+                        "Homodiegético",
+                        "Autodiegético"
+                    ]
+                },
+                "desc": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "description": "Breve descrição do narrador, focando-se na sua relação com a história."
+                },
+                "voice": {
+                    "type": "array",
+                    "maxItems": 2,
+                    "items": {
+                        "type": "string",
+                        "description": "Escolhe dois tons de voz de forma aleatória mas não os repitas.",
+                        "enum": [
+                            "Formal",
+                            "Informal",
+                            "Parcial",
+                            "Imparcial",
+                            "Frio",
+                            "Poético",
+                            "Cómico",
+                            "Lírico",
+                            "Dramático",
+                            "Épico",
+                            "Irritante",
+                            "Sarcástico",
+                            "Cínico",
+                            "Satírico",
+                            "Didático",
+                            "Filosófico"
+                        ]
+                    }
+                }
+            }
+        },
+        "suspense": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "O elemento de suspense da narrativa. Deve ser uma pergunta que o leitor deseja ver respondida. Deve ser possível de decifrar pelo leitor mas não deve ser óbvio."
+        },
+        "surprise": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "O elemento surpresa que muda o rumo da narrativa. Deve ser inesperado e surpreendente, mas não deve ser um deus ex machina."
+        }
+    },
+    "required": [
+        "id",
+        "highConcept",
+        "title",
+        "protagonist",
+        "genre",
+        "narrator"
+    ]
+}
+

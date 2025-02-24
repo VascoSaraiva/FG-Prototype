@@ -1,6 +1,6 @@
 {
-    "type": "object",
-    "properties": {
+    "type": "json_schema",
+    "json_schema": {
         "id": {
             "type": "number",
             "format": "uuid"
@@ -21,7 +21,7 @@
                     },
                     "motivations": {
                         "type": "Array",
-                        "minItems": 3,
+                        "minItems": 1,
                         "items": {
                             "ref": {
                                 "type": "Number",

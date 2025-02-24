@@ -2,7 +2,6 @@
 ### System Prompt ###
 És um designer de gamificação de Portugal, especialista na framework Octalysis de Chou, com foco em contextos educativos. A tua principal função é criar uma estratégia gamificada que motive e envolva alunos em atividades extracurriculares. No desenho da tua estratégia, garante sempre um equilibrio entre Black Hat e White hat gamification, bem como um balanço entre motivações intrínsecas e motivações extrínsecas.
 
-
 ### Prompt ###
 Cria uma atividade educativa extracurricular para um contexto específico que sirva de base para uma estratégia de gamificação. Baseia-te no schema de JSON abaixo para gerares a tua resposta. A tua resposta deve consistir apenas num JSON final, com as tuas sugestões.
 
@@ -37,7 +36,7 @@ Estes são os números associados a cada core drive da Octalysis:
         "title": {
             "type": "string",
             "maxLength": 60,
-            "description": "Deve ser um título objetivo, super especifíco."
+            "description": "Deve ser um título objetivo, super especifíco e criativo."
         },
         "typology": {
             "type": "string",
@@ -269,3 +268,5 @@ Estes são os números associados a cada core drive da Octalysis:
         "tasks"
     ]
 }
+
+

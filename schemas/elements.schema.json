@@ -1,24 +1,14 @@
-### System Prompt ###
-És um designer de gamificação de Portugal, especialista na framework Octalysis de Chou, com foco em contextos educativos. A tua principal função é criar narrativas gamificadas: histórias que apelam às motivações dos participantes ao longo de uma atividade extracurricular e que funcionam como metáforas às tarefas e desafios reais.
-
-### Prompt ###
-Considera o seguinte JSON com os dados de uma atividade:
-
-...
-
-Cria os elementos de uma narrativa gamificada com base nos itens da atividade acima. Baseia-te no schema de JSON abaixo para gerares a tua resposta. A tua resposta deve consistir apenas num único JSON final, com as tuas sugestões.
-
 {
-    "type": "object",
-    "properties": {
+    "type": "json_schema",
+    "json_schema": {
         "id": {
             "type": "string",
             "format": "uuid"
         },
         "highConcept": {
             "type": "string",
-            "maxLength": 100,
-            "description": "Uma frase começada por 'E se...?' que transmite uma ideia de conceito altamente criativa e original, que seja central para a narrativa."
+            "maxLength": 50,
+            "description": "Uma frase começada por 'E se...?' que vende o conceito da história. Imagina-te a apresentar a ideia a um grupo de investidores altamente rigorosos."
         },
         "conflict": {
             "type": "string",
@@ -51,7 +41,7 @@ Cria os elementos de uma narrativa gamificada com base nos itens da atividade ac
                 },
                 "motivations": {
                     "type": "array",
-                    "minItems": 12,
+                    "minItems": 5,
                     "description": "As motivações que levam o(s) protagonista(s) à ação dentro da história.",
                     "items": {
                         "type": "object",
@@ -116,13 +106,13 @@ Cria os elementos de uma narrativa gamificada com base nos itens da atividade ac
                         "type": "string",
                         "maxLength": 100,
                         "description": "A descrição deve ser mínima e objetiva, focando-se na função do personagem na narrativa."
-                    },
-                    "required": [
-                        "type",
-                        "name",
-                        "desc"
-                    ]
-                }
+                    }
+                },
+                "required": [
+                    "type",
+                    "name",
+                    "desc"
+                ]
             }
         },
         "scenario": {
@@ -147,20 +137,20 @@ Cria os elementos de uma narrativa gamificada com base nos itens da atividade ac
                     "desc": {
                         "type": "string",
                         "maxLength": 300
-                    },
-                    "required": [
-                        "type",
-                        "title",
-                        "desc"
-                    ]
-                }
+                    }
+                },
+                "required": [
+                    "type",
+                    "title",
+                    "desc"
+                ]
             }
         },
         "genre": {
             "type": "array",
             "minItems": 2,
             "maxItems": 2,
-            "description": "Escolhe dois géneros literários de forma aleatória mas não os repitas.",
+            "description": "Faz uma combinação altamente improvável entre dois géneros",
             "items": {
                 "type": "string",
                 "enum": [
@@ -231,12 +221,12 @@ Cria os elementos de uma narrativa gamificada com base nos itens da atividade ac
         },
         "suspense": {
             "type": "string",
-            "maxLength": 100,
+            "maxLength": 50,
             "description": "O elemento de suspense da narrativa. Deve ser uma pergunta que o leitor deseja ver respondida. Deve ser possível de decifrar pelo leitor mas não deve ser óbvio."
         },
         "surprise": {
             "type": "string",
-            "maxLength": 100,
+            "maxLength": 50,
             "description": "O elemento surpresa que muda o rumo da narrativa. Deve ser inesperado e surpreendente, mas não deve ser um deus ex machina."
         }
     },
@@ -249,4 +239,3 @@ Cria os elementos de uma narrativa gamificada com base nos itens da atividade ac
         "narrator"
     ]
 }
-

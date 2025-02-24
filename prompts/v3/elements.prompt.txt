@@ -1,3 +1,124 @@
+### System Prompt ###
+És um storyteller, conhecedor da framework Octalysis de Chou, com foco em contextos educativos. A tua principal função é criar narrativas gamificadas: histórias que apelam às motivações dos participantes ao longo de uma atividade extracurricular e que funcionam como metáforas às tarefas e desafios reais.
+
+### Prompt ###
+Considera o seguinte JSON com os dados de uma atividade:
+
+{
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "audience": ["Ensino Secundário"],
+    "title": "Missão: Cidade Sustentável 2050",
+    "typology": "Projeto",
+    "areas": ["Ciências Ambientais", "Engenharia", "Design", "Tecnologia", "Cidadania"],
+    "objective": {
+        "verb": "Criar",
+        "title": "Criar um modelo sustentável e inovador para uma cidade do futuro, utilizando soluções reais e aplicáveis."
+    },
+    "duration": {
+        "start": "2025-03-01T09:00:00Z",
+        "end": "2025-06-30T18:00:00Z"
+    },
+    "desc": "Uma competição educativa onde equipas de estudantes do Ensino Secundário irão criar uma maquete digital e física de uma cidade sustentável para o ano 2050. O projeto será desenvolvido ao longo de quatro meses, com mentoria, desafios semanais e prémios para as soluções mais inovadoras e viáveis. O evento culminará numa apresentação pública e numa feira de projetos, promovendo o pensamento crítico, a criatividade e a colaboração."
+    ,"tasks": {
+        "Discovery": [
+            {
+                "title": "Investigar os desafios urbanos contemporâneos",
+                "verb": "Investigar",
+                "desc": "Os participantes irão pesquisar e identificar os principais desafios ambientais, sociais e tecnológicos enfrentados pelas cidades atuais, construindo uma base de conhecimento para o projeto.",
+                "motivations": [
+                    {
+                        "id": "motivation-1",
+                        "tought": "Se eu entender os problemas atuais, então poderei criar soluções inovadoras.",
+                        "coreDrive": 3
+                    },
+                    {
+                        "id": "motivation-2",
+                        "tought": "Se a minha pesquisa for relevante, então serei reconhecido pela equipa.",
+                        "coreDrive": 5
+                    }
+                ]
+            }
+        ],
+        "Onboarding": [
+            {
+                "title": "Desenhar o conceito inicial da cidade",
+                "verb": "Desenhar",
+                "desc": "Cada equipa irá criar um esboço conceitual da sua cidade sustentável, definindo elementos-chave como energia, transportes, gestão de resíduos e espaços verdes.",
+                "motivations": [
+                    {
+                        "id": "motivation-3",
+                        "tought": "Se formos criativos, então o nosso projeto será único.",
+                        "coreDrive": 3
+                    },
+                    {
+                        "id": "motivation-4",
+                        "tought": "Se cumprirmos o prazo, então ganharemos pontos de progressão.",
+                        "coreDrive": 2
+                    }
+                ]
+            }
+        ],
+        "Scaffolding": [
+            {
+                "title": "Construir a maquete digital",
+                "verb": "Construir",
+                "desc": "As equipas irão utilizar ferramentas digitais para criar um modelo 3D interativo da cidade, recebendo feedback contínuo dos mentores.",
+                "motivations": [
+                    {
+                        "id": "motivation-5",
+                        "tought": "Se recebermos feedback positivo, então saberemos que estamos no caminho certo.",
+                        "coreDrive": 4
+                    },
+                    {
+                        "id": "motivation-6",
+                        "tought": "Se o nosso modelo for impressionante, então poderemos ganhar prémios.",
+                        "coreDrive": 6
+                    }
+                ]
+            },
+            {
+                "title": "Apresentar a cidade na feira final",
+                "verb": "Apresentar",
+                "desc": "Cada equipa irá apresentar o seu projeto a um painel de jurados e ao público, defendendo as suas escolhas e destacando a inovação do seu modelo urbano.",
+                "motivations": [
+                    {
+                        "id": "motivation-7",
+                        "tought": "Se fizermos uma apresentação cativante, então poderemos inspirar outras pessoas.",
+                        "coreDrive": 1
+                    },
+                    {
+                        "id": "motivation-8",
+                        "tought": "Se formos convincentes, então ganharemos o reconhecimento do júri.",
+                        "coreDrive": 5
+                    }
+                ]
+            }
+        ],
+        "Endgame": [
+            {
+                "title": "Refletir sobre o impacto do projeto",
+                "verb": "Refletir",
+                "desc": "As equipas farão uma sessão de retrospectiva, avaliando o impacto das suas soluções e discutindo melhorias para futuras edições do projeto.",
+                "motivations": [
+                    {
+                        "id": "motivation-9",
+                        "tought": "Se refletirmos, então aprenderemos com os nossos erros.",
+                        "coreDrive": 8
+                    },
+                    {
+                        "id": "motivation-10",
+                        "tought": "Se contribuirmos com ideias de melhoria, então poderemos moldar o futuro do projeto.",
+                        "coreDrive": 4
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+
+Cria os elementos de uma narrativa gamificada altamente ficcional com base nos itens da atividade acima. Baseia-te no schema de JSON abaixo para gerares a tua resposta. A tua resposta deve consistir apenas num único JSON final, com as tuas sugestões.
+
 {
     "type": "object",
     "properties": {
@@ -7,8 +128,8 @@
         },
         "highConcept": {
             "type": "string",
-            "maxLength": 100,
-            "description": "Uma frase começada por 'E se...?' que transmite uma ideia de conceito altamente criativa e original, que seja central para a narrativa."
+            "maxLength": 50,
+            "description": "Uma frase começada por 'E se...?' que vende o conceito da história. Imagina-te a apresentar a ideia a um grupo de investidores altamente rigorosos que só acreditam nas ideias mais originais e diferentes."
         },
         "conflict": {
             "type": "string",
@@ -150,7 +271,7 @@
             "type": "array",
             "minItems": 2,
             "maxItems": 2,
-            "description": "Escolhe dois géneros literários de forma aleatória mas não os repitas.",
+            "description": "Faz uma combinação altamente improvável entre dois géneros",
             "items": {
                 "type": "string",
                 "enum": [
@@ -221,12 +342,12 @@
         },
         "suspense": {
             "type": "string",
-            "maxLength": 100,
+            "maxLength": 50,
             "description": "O elemento de suspense da narrativa. Deve ser uma pergunta que o leitor deseja ver respondida. Deve ser possível de decifrar pelo leitor mas não deve ser óbvio."
         },
         "surprise": {
             "type": "string",
-            "maxLength": 100,
+            "maxLength": 50,
             "description": "O elemento surpresa que muda o rumo da narrativa. Deve ser inesperado e surpreendente, mas não deve ser um deus ex machina."
         }
     },
@@ -239,3 +360,4 @@
         "narrator"
     ]
 }
+
