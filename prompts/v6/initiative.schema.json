@@ -1,0 +1,335 @@
+{
+    "name": "initiative_schema",
+    "description": "Cria a estrutura base de uma atividade.",
+    "strict": true,
+    "schema": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "number"
+            },
+            "participants": {
+                "type": "object",
+                "properties": {
+                    "educationLevel": {
+                        "type": "string",
+                        "description": "O nível de ensino a que a atividade se destina.",
+                        "enum": [
+                            "2º Ciclo",
+                            "3º Ciclo",
+                            "Ensino Secundário",
+                            "Licenciatura",
+                            "Mestrado",
+                            "Doutoramento"
+                        ]
+                    },
+                    "playerType": {
+                        "type": "string",
+                        "description": "O tipo de participantes (enquanto jogadores) que a atividade vai atrair.",
+                        "anyOf": [
+                           {
+                            "const": "Achiever",
+                            "description": "Participantes que gostam de completar tarefas, superar desafios e alcançar objetivos concretos."
+                           },
+                           {
+                            "const": "Explorer",
+                            "description": "Participantes que gostam de explorar, aprender e descobrir coisas novas."
+                           },
+                           {
+                            "const": "Socializer",
+                            "description": "O jogador que gosta de interagir, colaborar com os outros e de partilhar experiências."
+                           },
+                           {
+                            "const": "Killer",
+                            "description": "O jogador que gosta de desafiar e ser desafiado de forma a competir com os outros e vencer."
+                           }
+                        ]
+                    }
+                },
+                "required": [
+                    "educationLevel",
+                    "playerType"
+                ],
+                "additionalProperties": false
+            },
+            "typology": {
+                "type": "object",
+                "properties": {
+                    "category": {
+                        "type": "string",
+                        "enum": [
+                            "Concurso",
+                            "Exposição",
+                            "Mentoria",
+                            "Workshop",
+                            "Conferência",
+                            "Voluntariado",
+                            "Palestra",
+                            "Celebração",
+                            "Reunião",
+                            "Investigação",
+                            "Festival",
+                            "Feira",
+                            "Maratona Desportiva",
+                            "Projeto"
+                        ]
+                    },
+                    "focus": {
+                        "type": "string",
+                        "description": "A área do cérebro que a atividade pretende estimular. Deve ser escolhida de acordo com a tipologia da atividade e público-alvo.",
+                        "anyOf": [
+                            {
+                                "const": "Left Brain",
+                                "description": "Corresponde a atividades que estimulam a lógica, a análise, a objetividade e a racionalidade. Predominância de motivações extrínsecas."
+                            },
+                            {
+                                "const": "Right Brain",
+                                "description": "Corresponde a atividades que estimulam a criatividade, a intuição, a subjetividade e a emoção. Predominância de motivações intrínsecas"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "category",
+                    "focus"
+                ],
+                "additionalProperties": false
+            },
+            "areas": {
+                "type": "array",
+                "description": "As áreas do conhecimento relacionadas com a atividade. Irão ser exploradas e desenvolvidas pelos participantes durante a atividade.",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "objective": {
+                "type": "object",
+                "properties": {
+                    "verb": {
+                        "type": "string",
+                        "description": "O verbo de ação que anuncia o objetivo principal da atividade.",
+                        "enum": [
+                            "Criar",
+                            "Desenvolver",
+                            "Construir",
+                            "Desenhar",
+                            "Inovar",
+                            "Investigar",
+                            "Explorar",
+                            "Aprender",
+                            "Partilhar",
+                            "Comunicar",
+                            "Resolver",
+                            "Descobrir",
+                            "Conhecer",
+                            "Experimentar",
+                            "Organizar",
+                            "Apresentar",
+                            "Promover",
+                            "Refletir",
+                            "Pensar",
+                            "Questionar",
+                            "Analisar",
+                            "Compreender",
+                            "Avaliar",
+                            "Melhorar",
+                            "Ajudar",
+                            "Colaborar",
+                            "Cooperar",
+                            "Participar",
+                            "Integrar",
+                            "Incluir",
+                            "Envolver",
+                            "Motivar",
+                            "Inspirar",
+                            "Desafiar",
+                            "Estimular",
+                            "Fomentar",
+                            "Encorajar",
+                            "Incentivar",
+                            "Impulsionar",
+                            "Potenciar",
+                            "Fortalecer",
+                            "Habilitar",
+                            "Treinar",
+                            "Formar",
+                            "Educar",
+                            "Ensinar",
+                            "Orientar",
+                            "Guiar",
+                            "Aconselhar",
+                            "Acompanhar"
+                        ]
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "O objetivo principal da atividade. Escreve o título começando a frase pelo verbo escolhido. Deve ser uma ideia original, diferenciadora e aplicável num contexto do mundo real. Deve ser um objetivo mensurável."
+                    }
+                },
+                "required": [
+                    "verb",
+                    "title"
+                ],
+                "additionalProperties": false
+            },
+            "duration": {
+                "type": "object",
+                "properties": {
+                    "start": {
+                        "type": "integer",
+                        "description": "Unix timestamp (seconds since epoch)"
+                    },
+                    "end": {
+                        "type": "integer",
+                        "description": "Unix timestamp (seconds since epoch)"
+                    }
+                },
+                "required": [
+                    "start",
+                    "end"
+                ],
+                "additionalProperties": false
+            },
+            "tasks": {
+                "type": "array",
+                "description": "As tarefas são as ações que os participantes terão de fazer para atingir o objetivo da atividade.",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "number"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "O título da tarefa deve indicar claramente o que os participantes terão de fazer. A frase deve ter apenas um único verbo de ação, que deve estar no ínicio da frase. Evita colocar duas tarefas juntas numa só. Este título deve responder diretamente à pergunta: O que vai o participante fazer em concreto?"
+                        },
+                        "verb": {
+                            "type": "string",
+                            "description": "O verbo de ação que anuncia a tarefa."
+                        },
+                        "motivations": {
+                            "type": "array",
+                            "description": "Os motivos que vão levar um participante a realizar a tarefa.",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "number"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "think": {
+                                        "type": "string",
+                                        "description": "O pensamento de um participante que reflete a sua motivação. Deve ser expresso sob a forma de uma condição:'Se eu ... então...'."
+                                    },
+                                    "coreDrive": {
+                                        "type": "string",
+                                        "description": "O Core Drive da Octalysis associado em que a motivação pode ser categorizada.",
+                                        "anyOf": [
+                                            {
+                                                "const": "CD1: Epic Meaning & Calling",
+                                                "description": "A crença de que se está a contribuir para algo maior do que si próprio."
+                                            },
+                                            {
+                                                "const": "CD2: Development & Accomplishment",
+                                                "description": "O desenjo intrínseco para progredir, desenvolver competências e superar desafios."
+                                            },
+                                            {
+                                                "const": "CD3: Empowerment of Creativity & Feedback",
+                                                "description": "Envolvimento através da exploração criativa, experimentação e capacidade de testar diferentes abordagens."
+                                            },
+                                            {
+                                                "const": "CD4: Ownership & Possession",
+                                                "description": "Motivação derivada do controlo sobre algo, incluindo a posse de um processo, projeto e/ou instituição."
+                                            },
+                                            {
+                                                "const": "CD5: Social Influence & Relatedness",
+                                                "description": "Motivadores sociais, como mentoria, aceitação social, feedback, companhia, competição, etc... "
+                                            },
+                                            {
+                                                "const": "CD6: Scarcity & Impatience",
+                                                "description": "Motivação impulsionada pela exclusividade, raridade ou pela incapacidade de aceder a algo de imediato."
+                                            },
+                                            {
+                                                "const": "CD7: Unpredictability & Curiosity",
+                                                "description": "Envolvimento gerado pela moção de não saber o que acontecerá a seguir."
+                                            },
+                                            {
+                                                "const": "CD8: Loss & Avoidance",
+                                                "description": "O desejo de evitar consequências negativas ou prevenir resultados indesejáveis."
+                                            }
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id",
+                                    "title",
+                                    "think",
+                                    "coreDrive"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "title",
+                        "verb",
+                        "motivations"
+                    ],
+                    "additionalProperties": false
+                }
+            },
+            "scores": {
+                "type": "object",
+                "properties": {
+                    "whiteHat": {
+                        "type": "number",
+                        "description": "Quantidade de core-drives escolhidas, orientadas a White Hat gamifiation."
+                    },
+                    "blackHat": {
+                        "type": "number",
+                        "description": "Quantidade de core-drives escolhidas, orientadas a Black Hat gamifiation."
+                    },
+                    "leftBrain": {
+                        "type": "number",
+                        "description": "Quantidade de Left Brain core-drives escolhidas."
+                    },
+                    "rightBrain": {
+                        "type": "number",
+                        "description": "Quantidade de Right Brain core-drives escolhidas."
+                    }
+                },
+                "required": [
+                    "whiteHat",
+                    "blackHat",
+                    "leftBrain",
+                    "rightBrain"
+                ],
+                "additionalProperties": false
+            },
+            "title": {
+                "type": "string",
+                "description": "O título da atividade deve ser curto, claro e apelativo. Deve ser capaz de captar a atenção e despertar a curiosidade."
+            },
+            "desc": {
+                "type": "string",
+                "description": "Um parágrafo que sintetize em que consiste a atividade. Tem de ser capaz de responder às perguntas: O quê? Quando? Onde? Como? Porquê?"
+            }
+        },
+        "required": [
+            "id",
+            "participants",
+            "typology",
+            "areas",
+            "objective",
+            "duration",
+            "tasks",
+            "scores",
+            "title",
+            "desc"
+        ],
+        "additionalProperties": false
+    }
+}
