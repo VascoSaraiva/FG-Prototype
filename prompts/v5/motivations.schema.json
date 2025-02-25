@@ -45,7 +45,7 @@
                                 "think": {
                                     "type": "string",
                                     "maxLength": 100,
-                                    "description": "O pensamento por trás da motivação de um participante. Deve ser expresso sob a forma de uma condição:'Se eu ... então...'."
+                                    "description": "O pensamento de um participante que reflete a sua motivação. Deve ser expresso sob a forma de uma condição:'Se eu ... então...'."
                                 },
                                 "coreDrive": {
                                     "type": "string",

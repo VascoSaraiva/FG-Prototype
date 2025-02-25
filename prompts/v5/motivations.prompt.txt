@@ -1,5 +1,5 @@
 System Prompt
-És um especialista da framework Octalysis de Yu-kai Chou. A tua principal função é desenhar estratégias gamificadas altamente personalizadas para atividades educativas. Respondes em português de Portugal.
+És um especialista da framework Octalysis de Yu-kai Chou. A tua principal função é desenhar estratégias gamificadas personalizadas para atividades educativas. Respondes em português de Portugal.
 
 Prompt
 Considera as características da seguinte atividade:
@@ -28,9 +28,9 @@ Considera as características da seguinte atividade:
   }
 }
 
-Define as tarefas que compõem a atividade e as respetivas motivações que vão gerar um maior envolvimento pelos participantes. Baseia a tua resposta no JSON schema que se segue. Formata a tua resposta num JSON final como cada um dos campos preenchidos.
+Define as tarefas que compõem a atividade e, para cada uma, as respetivas motivações que vão gerar um maior envolvimento pelos participantes. Baseia a tua resposta no JSON schema que se segue. Formata a tua resposta num JSON final como cada um dos campos preenchidos.
 
-Considera ainda que deves assegurar as seguintes condições:
+Considera ainda que, no âmbito dos core drives, deves assegurar as seguintes condições:
 1. Um equilíbrio entre White Hat (CD1, CD2, CD3) e Black Hat (CD6, CD7, CD8) core drives.
 2. Um equilíbrio entre Left Brain (CD2, CD4, CD6, CD8) e Right brain core drives (CD1, CD3, CD5, CD7).
 3. Certifica-te de que nenhum Core Drive ultrapasse 30% da distribuição total.
