@@ -1,0 +1,227 @@
+{
+    "name": "ingredients_schema",
+    "description": "Contem os elementos narrativos de uma história.",
+    "strict": true,
+    "schema": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "number"
+            },
+            "highConcept": {
+                "type": "string",
+                "description": "Uma frase começada por 'E se...?' que sugere o conceito da história. Deve ser a ideia mais criativa de sempre."
+            },
+            "conflict": {
+                "type": "string",
+                "description": "O desafio que o protagonista irá enfrentar."
+            },
+            "title": {
+                "type": "string",
+                "description": "O título da história."
+            },
+            "protagonist": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "anyOf": [
+                            {
+                                "const": "Participante",
+                                "decription": "O próprio leitor, enquanto participante."
+                            },
+                            {
+                                "const": "Grupo",
+                                "description": "O grupo de participantes a que o leitor pertence."
+                            },
+                            {
+                                "const": "Personagem",
+                                "description": "Um personagem totalmente ficcional."
+                            }
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Apenas deve ser especificado se o protagonista for do tipo 'Personagem'. Caso contrário deve ser 'null'. Pode ser um nome próprio ou comum."
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A descrição do protagonista deve se limitar exclusivamente à sua função na narrativa. Não deve incluir quaiquer detalhes psicológicos ou estéticos. Pode incluir descrição de objetos, roupas ou acessórios essenciais para a compreensão da narrativa."
+                    }
+                },
+                "required": [
+                    "type",
+                    "name",
+                    "description"
+                ],
+                "additionalProperties": false
+            },
+            "characters": {
+                "type": "array",
+                "description": "Personagens secundários que servem o plot e a temática da narrativa. Podem ser, no máximo, 2.",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "Inimigo",
+                                "Necessitado",
+                                "Colaborador",
+                                "Inimigos",
+                                "Necesitados",
+                                "Colaboradores",
+                                "Inimiga",
+                                "Necessitada",
+                                "Colaboradora",
+                                "Inimigas",
+                                "Necessitadas",
+                                "Colaboradoras"
+                            ]
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Pode ser nome próprio ou comum."
+                        },
+                        "desc": {
+                            "type": "string",
+                            "description": "A descrição deve ser mínima e objetiva, focando-se na função do personagem na narrativa."
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "name",
+                        "desc"
+                    ],
+                    "additionalProperties": false
+                }
+            },
+            "scenario": {
+                "type": "array",
+                "description": "Cenário(s) onde decorre a narrativa. Devem ser absolutamente essenciais à história. Podem ser, no máximo, até 3.",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "Localização",
+                                "Contexto Temporal",
+                                "Contexto Social"
+                            ]
+                        },
+                        "title": {
+                            "type": "string"
+                        },
+                        "desc": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "title",
+                        "desc"
+                    ],
+                    "additionalProperties": false
+                }
+            },
+            "genre": {
+                "type": "array",
+                "description": "Escolhe uma combinação altamente improvável de 2 géneros distintos para a história.",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "Fantasia",
+                        "Ficção Ciêntifica",
+                        "Mistério",
+                        "Noir",
+                        "História",
+                        "Distopia",
+                        "Utopia",
+                        "Terror",
+                        "Romance",
+                        "Comédia",
+                        "Thriller",
+                        "Western",
+                        "Épico",
+                        "Poesia",
+                        "Fábula",
+                        "Reportagem",
+                        "Aventura",
+                        "Realismo"
+                    ]
+                }
+            },
+            "narrator": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "Heterodiegético",
+                            "Homodiegético",
+                            "Autodiegético"
+                        ]
+                    },
+                    "desc": {
+                        "type": "string",
+                        "description": "Breve descrição do narrador, focando-se na sua relação com a história."
+                    },
+                    "voice": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "description": "Escolhe uma combinação altamente improvável de 2 tons de voz distintos.",
+                            "enum": [
+                                "Formal",
+                                "Informal",
+                                "Parcial",
+                                "Imparcial",
+                                "Frio",
+                                "Poético",
+                                "Cómico",
+                                "Lírico",
+                                "Dramático",
+                                "Épico",
+                                "Irritante",
+                                "Sarcástico",
+                                "Cínico",
+                                "Satírico",
+                                "Didático",
+                                "Filosófico"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "type",
+                    "desc",
+                    "voice"
+                ],
+                "additionalProperties": false
+            },
+            "suspense": {
+                "type": "string",
+                "description": "O elemento de suspense da narrativa. Escreve sob forma de uma pergunta que o leitor deseja ver respondida. Deve ser possível de decifrar pelo leitor mas não deve ser algo óbvio."
+            },
+            "surprise": {
+                "type": "string",
+                "description": "O elemento surpresa que muda o rumo da narrativa. Deve ser inesperado e surpreendente, mas não deve ser um deus ex machina."
+            }
+        },
+        "required": [
+            "id",
+            "highConcept",
+            "conflict",
+            "title",
+            "protagonist",
+            "characters",
+            "scenario",
+            "genre",
+            "narrator",
+            "suspense",
+            "surprise"
+        ],
+        "additionalProperties": false
+    }
+}

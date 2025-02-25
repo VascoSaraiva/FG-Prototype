@@ -1,0 +1,135 @@
+###System Prompt###
+És um arquiteto de histórias, capaz de elaborar narrativas de múltiplos géneros literários. És altamente criativo e imprevisivel. As tuas histórias são integradas em estratégias de gamificação e servem propósitos educativos. As tuas respostas são em PT-PT.
+
+###Prompt###
+Baseia-te na estrutura da seguinte atividade educativa para conceptualizares os elementos de uma narrativa ficcional.
+
+{
+  "id": 1,
+  "participants": {
+    "educationLevel": "Ensino Secundário",
+    "playerType": "Socializer"
+  },
+  "typology": {
+    "category": "Workshop",
+    "focus": "Right Brain"
+  },
+  "areas": [
+    "Artes",
+    "Comunicação",
+    "Visualização Criativa"
+  ],
+  "objective": {
+    "verb": "Desenvolver",
+    "title": "capacidades de expressão artística e comunicação visual criativa através do uso de técnicas dinâmicas em grupo."
+  },
+  "duration": {
+    "start": 1698739200,
+    "end": 1698750000
+  },
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Criar uma obra visual colaborativa em grupo",
+      "verb": "Criar",
+      "motivations": [
+        {
+          "id": 1,
+          "title": "Participar num esforço coletivo pode ser muito satisfatório",
+          "think": "Se eu contribuir com a minha visão, então estou a ajudar a criar algo maior que o individual.",
+          "coreDrive": "CD1: Epic Meaning & Calling"
+        },
+        {
+          "id": 2,
+          "title": "Explorar diferentes abordagens criativas é emocionante",
+          "think": "Se eu contribuir com ideias novas, então estarei a experimentar a criação de um conceito numa nova perspectiva.",
+          "coreDrive": "CD3: Empowerment of Creativity & Feedback"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Desenhar um cartaz explicativo com base numa ideia inicial",
+      "verb": "Desenhar",
+      "motivations": [
+        {
+          "id": 1,
+          "title": "Fazer algo visualmente atrativo gera reconhecimento",
+          "think": "Se eu criar algo apelativo, então receberei o elogio do meu grupo.",
+          "coreDrive": "CD5: Social Influence & Relatedness"
+        },
+        {
+          "id": 2,
+          "title": "Expor o trabalho motiva a participação ativa",
+          "think": "Se eu fizer o trabalho melhor, então serei reconhecido pela audiência.",
+          "coreDrive": "CD2: Development & Accomplishment"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Colaborar na conceção de uma performance de grupo",
+      "verb": "Colaborar",
+      "motivations": [
+        {
+          "id": 1,
+          "title": "Criar ligação com os demais",
+          "think": "Se eu colaborar com empenho, então faremos um trabalho que é superior ao que podemos fazer sozinhos.",
+          "coreDrive": "CD5: Social Influence & Relatedness"
+        },
+        {
+          "id": 2,
+          "title": "A experiência do processo importa mais que resultados",
+          "think": "Se eu desfrutar da colaboração, então isso será recompensante para mim.",
+          "coreDrive": "CD3: Empowerment of Creativity & Feedback"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Apresentar a obra criada ao restante público",
+      "verb": "Apresentar",
+      "motivations": [
+        {
+          "id": 1,
+          "title": "Sentir orgulho no próprio trabalho desenvolvido",
+          "think": "Se eu fizer uma apresentação estelar, então vou inspirar outros e reforçar a apreciação do trabalho.",
+          "coreDrive": "CD1: Epic Meaning & Calling"
+        },
+        {
+          "id": 2,
+          "title": "Demonstrar competências gera impacto e confiança pessoal",
+          "think": "Se eu for muito bom a apresentar, então terei mais segurança no que posso fazer futuramente.",
+          "coreDrive": "CD2: Development & Accomplishment"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Refletir coletivamente sobre os resultados e experiência obtida",
+      "verb": "Refletir",
+      "motivations": [
+        {
+          "id": 1,
+          "title": "A discussão gera clareza e amplifica o aprendizado",
+          "think": "Se eu der a minha opinião e ouvir as dos outros, então vou melhorar com perspetivas extra.",
+          "coreDrive": "CD5: Social Influence & Relatedness"
+        },
+        {
+          "id": 2,
+          "title": "Reavaliar o caminho proporciona compreensão mais rica do processo",
+          "think": "Se eu refletir, então perceberei o que aprendi e redefinirei posições futuras.",
+          "coreDrive": "CD3: Empowerment of Creativity & Feedback"
+        }
+      ]
+    }
+  ],
+  "scores": {
+    "whiteHat": 3,
+    "blackHat": 2,
+    "leftBrain": 2,
+    "rightBrain": 3
+  },
+  "title": "Expressão Interativa: Arte em Grupo",
+  "desc": "Um workshop interativo onde os participantes desenvolvem competências em expressão criativa e comunicação visual ao colaborarem na conceção de obras artísticas. Durante uma tarde, os estudantes secundários irão envolver-se em atividades dinâmicas que permitem explorar a criatividade enquanto promovem o trabalho de grupo."
+}
