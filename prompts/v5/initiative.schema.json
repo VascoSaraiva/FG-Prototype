@@ -1,0 +1,146 @@
+{
+    "type": "json_schema",
+    "json_schema": {
+        "properties": {
+            "id": {
+                "type": "string",
+                "format": "uuid"
+            },
+            "audience": {
+                "type": "string",
+                "enum": [
+                    "2º Ciclo",
+                    "3º Ciclo",
+                    "Ensino Secundário",
+                    "Licenciatura",
+                    "Mestrado",
+                    "Doutoramento"
+                ]
+            },
+            "typology": {
+                "type": "string",
+                "enum": [
+                    "Concurso",
+                    "Exposição",
+                    "Mentoria",
+                    "Workshop",
+                    "Conferência",
+                    "Voluntariado",
+                    "Palestra",
+                    "Celebração",
+                    "Reunião",
+                    "Investigação",
+                    "Festival",
+                    "Feira",
+                    "Maratona",
+                    "Projeto"
+                ]
+            },
+            "areas": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 5,
+                "description": "As áreas do conhecimento relacionadas com a atividade. Irão ser exploradas e desenvolvidas pelos participantes durante a atividade.",
+                "items": {
+                    "type": "string",
+                    "maxLength": 70
+                }
+            },
+            "objective": {
+                "type": "object",
+                "properties": {
+                    "verb": {
+                        "type": "string",
+                        "description": "O verbo de ação que anuncia o objetivo principal da atividade.",
+                        "enum": [
+                            "Criar",
+                            "Desenvolver",
+                            "Construir",
+                            "Desenhar",
+                            "Inovar",
+                            "Investigar",
+                            "Explorar",
+                            "Aprender",
+                            "Partilhar",
+                            "Comunicar",
+                            "Resolver",
+                            "Descobrir",
+                            "Conhecer",
+                            "Experimentar",
+                            "Organizar",
+                            "Apresentar",
+                            "Promover",
+                            "Refletir",
+                            "Pensar",
+                            "Questionar",
+                            "Analisar",
+                            "Compreender",
+                            "Avaliar",
+                            "Melhorar",
+                            "Ajudar",
+                            "Colaborar",
+                            "Cooperar",
+                            "Participar",
+                            "Integrar",
+                            "Incluir",
+                            "Envolver",
+                            "Motivar",
+                            "Inspirar",
+                            "Desafiar",
+                            "Estimular",
+                            "Fomentar",
+                            "Encorajar",
+                            "Incentivar",
+                            "Impulsionar",
+                            "Potenciar",
+                            "Fortalecer",
+                            "Habilitar",
+                            "Treinar",
+                            "Formar",
+                            "Educar",
+                            "Ensinar",
+                            "Orientar",
+                            "Guiar",
+                            "Aconselhar",
+                            "Acompanhar"
+                        ]
+                    },
+                    "title": {
+                        "type": "string",
+                        "maxLength": 70,
+                        "description": "O objetivo principal que os participantes irão ter de alcançar. A frase deve começar pelo verbo escolhido. Deve ser uma ideia muito original, diferenciadora e aplicável num contexto do mundo real."
+                    }
+                },
+                "required": [
+                    "title"
+                ]
+            },
+            "duration": {
+                "type": "object",
+                "properties": {
+                    "start": {
+                        "type": "integer",
+                        "description": "Unix timestamp (seconds since epoch)"
+                    },
+                    "end": {
+                        "type": "integer",
+                        "description": "Unix timestamp (seconds since epoch)"
+                    }
+                },
+                "required": [
+                    "start",
+                    "end"
+                ]
+            }
+        },
+        "required": [
+            "id",
+            "title",
+            "objective",
+            "audience",
+            "typology",
+            "areas",
+            "duration"
+        ]
+    }
+}
