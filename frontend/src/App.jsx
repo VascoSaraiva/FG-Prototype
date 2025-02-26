@@ -1,10 +1,9 @@
-import { Button } from "@/components/ui/button"
+import React from 'react'
 
 function App() {
-
   return (
-    <div className="flex justify-center items-center h-screen gap-2">
-      <Button>Default</Button>
+    <div>
+      App
     </div>
   )
 }
