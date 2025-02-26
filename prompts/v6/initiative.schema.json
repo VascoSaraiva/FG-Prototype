@@ -5,9 +5,6 @@
     "schema": {
         "type": "object",
         "properties": {
-            "id": {
-                "type": "number"
-            },
             "participants": {
                 "type": "object",
                 "properties": {
@@ -27,22 +24,22 @@
                         "type": "string",
                         "description": "O tipo de participantes (enquanto jogadores) que a atividade vai atrair.",
                         "anyOf": [
-                           {
-                            "const": "Achiever",
-                            "description": "Participantes que gostam de completar tarefas, superar desafios e alcançar objetivos concretos."
-                           },
-                           {
-                            "const": "Explorer",
-                            "description": "Participantes que gostam de explorar, aprender e descobrir coisas novas."
-                           },
-                           {
-                            "const": "Socializer",
-                            "description": "O jogador que gosta de interagir, colaborar com os outros e de partilhar experiências."
-                           },
-                           {
-                            "const": "Killer",
-                            "description": "O jogador que gosta de desafiar e ser desafiado de forma a competir com os outros e vencer."
-                           }
+                            {
+                                "const": "Achiever",
+                                "description": "Participantes que gostam de completar tarefas, superar desafios e alcançar objetivos concretos."
+                            },
+                            {
+                                "const": "Explorer",
+                                "description": "Participantes que gostam de explorar, aprender e descobrir coisas novas."
+                            },
+                            {
+                                "const": "Socializer",
+                                "description": "O jogador que gosta de interagir, colaborar com os outros e de partilhar experiências."
+                            },
+                            {
+                                "const": "Killer",
+                                "description": "O jogador que gosta de desafiar e ser desafiado de forma a competir com os outros e vencer."
+                            }
                         ]
                     }
                 },
@@ -53,47 +50,23 @@
                 "additionalProperties": false
             },
             "typology": {
-                "type": "object",
-                "properties": {
-                    "category": {
-                        "type": "string",
-                        "enum": [
-                            "Concurso",
-                            "Exposição",
-                            "Mentoria",
-                            "Workshop",
-                            "Conferência",
-                            "Voluntariado",
-                            "Palestra",
-                            "Celebração",
-                            "Reunião",
-                            "Investigação",
-                            "Festival",
-                            "Feira",
-                            "Maratona Desportiva",
-                            "Projeto"
-                        ]
-                    },
-                    "focus": {
-                        "type": "string",
-                        "description": "A área do cérebro que a atividade pretende estimular. Deve ser escolhida de acordo com a tipologia da atividade e público-alvo.",
-                        "anyOf": [
-                            {
-                                "const": "Left Brain",
-                                "description": "Corresponde a atividades que estimulam a lógica, a análise, a objetividade e a racionalidade. Predominância de motivações extrínsecas."
-                            },
-                            {
-                                "const": "Right Brain",
-                                "description": "Corresponde a atividades que estimulam a criatividade, a intuição, a subjetividade e a emoção. Predominância de motivações intrínsecas"
-                            }
-                        ]
-                    }
-                },
-                "required": [
-                    "category",
-                    "focus"
-                ],
-                "additionalProperties": false
+                "type": "string",
+                "enum": [
+                    "Concurso",
+                    "Exposição",
+                    "Mentoria",
+                    "Workshop",
+                    "Conferência",
+                    "Voluntariado",
+                    "Palestra",
+                    "Celebração",
+                    "Reunião",
+                    "Investigação",
+                    "Festival",
+                    "Feira",
+                    "Maratona Desportiva",
+                    "Projeto"
+                ]
             },
             "areas": {
                 "type": "array",
@@ -191,121 +164,145 @@
                 "additionalProperties": false
             },
             "tasks": {
-                "type": "array",
-                "description": "As tarefas são as ações que os participantes terão de fazer para atingir o objetivo da atividade.",
-                "items": {
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "type": "number"
-                        },
-                        "title": {
-                            "type": "string",
-                            "description": "O título da tarefa deve indicar claramente o que os participantes terão de fazer. A frase deve ter apenas um único verbo de ação, que deve estar no ínicio da frase. Evita colocar duas tarefas juntas numa só. Este título deve responder diretamente à pergunta: O que vai o participante fazer em concreto?"
-                        },
-                        "verb": {
-                            "type": "string",
-                            "description": "O verbo de ação que anuncia a tarefa."
-                        },
-                        "motivations": {
-                            "type": "array",
-                            "description": "Os motivos que vão levar um participante a realizar a tarefa.",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "number"
-                                    },
-                                    "title": {
-                                        "type": "string"
-                                    },
-                                    "think": {
-                                        "type": "string",
-                                        "description": "O pensamento de um participante que reflete a sua motivação. Deve ser expresso sob a forma de uma condição:'Se eu ... então...'."
-                                    },
-                                    "coreDrive": {
-                                        "type": "string",
-                                        "description": "O Core Drive da Octalysis associado em que a motivação pode ser categorizada.",
-                                        "anyOf": [
-                                            {
-                                                "const": "CD1: Epic Meaning & Calling",
-                                                "description": "A crença de que se está a contribuir para algo maior do que si próprio."
-                                            },
-                                            {
-                                                "const": "CD2: Development & Accomplishment",
-                                                "description": "O desenjo intrínseco para progredir, desenvolver competências e superar desafios."
-                                            },
-                                            {
-                                                "const": "CD3: Empowerment of Creativity & Feedback",
-                                                "description": "Envolvimento através da exploração criativa, experimentação e capacidade de testar diferentes abordagens."
-                                            },
-                                            {
-                                                "const": "CD4: Ownership & Possession",
-                                                "description": "Motivação derivada do controlo sobre algo, incluindo a posse de um processo, projeto e/ou instituição."
-                                            },
-                                            {
-                                                "const": "CD5: Social Influence & Relatedness",
-                                                "description": "Motivadores sociais, como mentoria, aceitação social, feedback, companhia, competição, etc... "
-                                            },
-                                            {
-                                                "const": "CD6: Scarcity & Impatience",
-                                                "description": "Motivação impulsionada pela exclusividade, raridade ou pela incapacidade de aceder a algo de imediato."
-                                            },
-                                            {
-                                                "const": "CD7: Unpredictability & Curiosity",
-                                                "description": "Envolvimento gerado pela moção de não saber o que acontecerá a seguir."
-                                            },
-                                            {
-                                                "const": "CD8: Loss & Avoidance",
-                                                "description": "O desejo de evitar consequências negativas ou prevenir resultados indesejáveis."
-                                            }
-                                        ]
-                                    }
-                                },
-                                "required": [
-                                    "id",
-                                    "title",
-                                    "think",
-                                    "coreDrive"
-                                ],
-                                "additionalProperties": false
-                            }
-                        }
-                    },
-                    "required": [
-                        "id",
-                        "title",
-                        "verb",
-                        "motivations"
-                    ],
-                    "additionalProperties": false
-                }
-            },
-            "scores": {
                 "type": "object",
+                "description": "Gera 5 tarefas para a atividade. Devem ser objetivas, mensuráveis, especificas, realistas e temporalmente execuíveis.",
                 "properties": {
-                    "whiteHat": {
-                        "type": "number",
-                        "description": "Quantidade de core-drives escolhidas, orientadas a White Hat gamifiation."
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "number"
+                            },
+                            "title": {
+                                "type": "string",
+                                "description": "O título da tarefa deve indicar claramente o que os participantes terão de fazer. A frase deve ter apenas um único verbo de ação, que deve estar no ínicio da frase. Evita colocar duas tarefas juntas numa só. Este título deve responder diretamente à pergunta: O que vai o participante fazer em concreto?"
+                            },
+                            "verb": {
+                                "type": "string",
+                                "description": "O verbo de ação que anuncia a tarefa."
+                            },
+                            "motivations": {
+                                "type": "array",
+                                "description": "Os motivos que vão levar um participante a realizar a tarefa. Gera 2 motivações para cada tarefa.",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "number"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "think": {
+                                            "type": "string",
+                                            "description": "O pensamento de um participante que reflete a sua motivação. Deve ser expresso sob a forma de uma condição:'Se eu ... então...'."
+                                        },
+                                        "coreDrive": {
+                                            "type": "string",
+                                            "description": "O core drive da Octalysis associado à motivação.",
+                                            "anyOf": [
+                                                {
+                                                    "const": {
+                                                        "name": "CD1: Epic Meaning & Calling",
+                                                        "description": "A crença de que se está a contribuir para algo maior do que si próprio."
+                                                    }
+                                                },
+                                                {
+                                                    "const": {
+                                                        "name": "CD2: Development & Accomplishment",
+                                                        "description": "O desenjo intrínseco para progredir, desenvolver competências e superar desafios."
+                                                    }
+                                                },
+                                                {
+                                                    "const": {
+                                                        "name": "CD3: Empowerment of Creativity & Feedback",
+                                                        "description": "Envolvimento através da exploração criativa, experimentação e capacidade de testar diferentes abordagens."
+                                                    }
+                                                },
+                                                {
+                                                    "const": {
+                                                        "name": "CD4: Ownership & Possession",
+                                                        "description": "Motivação derivada do controlo sobre algo, incluindo a posse de um processo, projeto e/ou instituição."
+                                                    }
+                                                },
+                                                {
+                                                    "const": {
+                                                        "name": "CD5: Social Influence & Relatedness",
+                                                        "description": "Motivadores sociais, como mentoria, aceitação social, feedback, companhia, competição, etc..."
+                                                    }
+                                                },
+                                                {
+                                                    "const": {
+                                                        "name": "CD6: Scarcity & Impatience",
+                                                        "description": "Motivação impulsionada pela exclusividade, raridade ou pela incapacidade de aceder a algo de imediato."
+                                                    }
+                                                },
+                                                {
+                                                    "const": {
+                                                        "name": "CD7: Unpredictability & Curiosity",
+                                                        "description": "Envolvimento gerado pela moção de não saber o que acontecerá a seguir."
+                                                    }
+                                                },
+                                                {
+                                                    "const": {
+                                                        "name": "CD8: Loss & Avoidance",
+                                                        "description": "O desejo de evitar consequências negativas ou prevenir resultados indesejáveis."
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "title",
+                                        "think",
+                                        "coreDrive"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "title",
+                            "verb",
+                            "motivations"
+                        ],
+                        "additionalProperties": false
                     },
-                    "blackHat": {
-                        "type": "number",
-                        "description": "Quantidade de core-drives escolhidas, orientadas a Black Hat gamifiation."
-                    },
-                    "leftBrain": {
-                        "type": "number",
-                        "description": "Quantidade de Left Brain core-drives escolhidas."
-                    },
-                    "rightBrain": {
-                        "type": "number",
-                        "description": "Quantidade de Right Brain core-drives escolhidas."
+                    "totals": {
+                        "type": "object",
+                        "description": "Quantifica o número de core drives em 4 categorias.",
+                        "properties": {
+                            "whiteHat": {
+                                "type": "number",
+                                "description": "Quantidade de motivações que integram White Hat gamification."
+                            },
+                            "blackHat": {
+                                "type": "number",
+                                "description": "Quantidade de motivações que integram Black Hat gamification."
+                            },
+                            "leftBrain": {
+                                "type": "number",
+                                "description": "Quantidade de motivações que integram Left Brain gamification."
+                            },
+                            "rightBrain": {
+                                "type": "number",
+                                "description": "Quantidade de motivações que integram Right Brain gamification."
+                            }
+                        },
+                        "required": [
+                            "whiteHat",
+                            "blackHat",
+                            "leftBrain",
+                            "rightBrain"
+                        ],
+                        "additionalProperties": false
                     }
                 },
                 "required": [
-                    "whiteHat",
-                    "blackHat",
-                    "leftBrain",
-                    "rightBrain"
+                    "items",
+                    "totals"
                 ],
                 "additionalProperties": false
             },
@@ -319,14 +316,12 @@
             }
         },
         "required": [
-            "id",
             "participants",
             "typology",
             "areas",
             "objective",
             "duration",
             "tasks",
-            "scores",
             "title",
             "desc"
         ],
