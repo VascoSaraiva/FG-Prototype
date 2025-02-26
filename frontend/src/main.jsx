@@ -5,17 +5,22 @@ import './index.css'
 
 import App from '@/App.jsx'
 import MainLayout from '@/components/layouts/MainLayout';
+import { TooltipProvider } from "@/components/ui/tooltip"
+
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
+    <TooltipProvider>
+      <BrowserRouter>
+        <Routes>
 
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<App />} />
-        </Route>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<App />} />
+          </Route>
 
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
   </StrictMode>
 )

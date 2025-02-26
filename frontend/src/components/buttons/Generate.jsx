@@ -1,11 +1,10 @@
 import React from 'react'
 import { Button } from "@/components/ui/button"
-import { Sparkles } from 'lucide-react';
 
 const Customize = () => {
-  return (
-    <Button variant='outline'> <Sparkles /> Custom Prompt</Button>
-  )
+    return (
+        <Button size='lg'>Generate new prompt</Button>
+    )
 }
 
 export default Customize
