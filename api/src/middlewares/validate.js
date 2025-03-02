@@ -1,21 +1,25 @@
-const Joi = require('joi');
+const { z } = require('zod');
 const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
-const status = require('http-status');
+const { status } = require('http-status');
 
 const validate = (schema) => (req, res, next) => {
+
+  // Pick keys (params, query, body) from the schema and the request
   const validSchema = pick(schema, ['params', 'query', 'body']);
   const object = pick(req, Object.keys(validSchema));
-  const { value, error } = Joi.compile(validSchema)
-    .prefs({ errors: { label: 'key' }, abortEarly: false })
-    .validate(object);
+  const combinedSchema = z.object(validSchema);
 
-  if (error) {
-    const errorMessage = error.details.map((details) => details.message).join(', ');
-    return next(new ApiError(status.BAD_REQUEST, errorMessage));
+  // Validate using safeParse which collects all errors by default
+  const result = combinedSchema.safeParse(object);
+
+  if (!result.success) {
+    return next(new ApiError(status.BAD_REQUEST, 'Invalid property', { errors: result.error.errors }));
   }
-  Object.assign(req, value);
-  return next(); 
+
+  // Merge validated values back into req
+  Object.assign(req, result.data);
+  return next();
 };
 
 module.exports = validate;

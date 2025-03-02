@@ -7,8 +7,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 const cors = require('cors');
 const ApiError = require('./utils/ApiError');
 const routes = require('./routes');
-const status = require('http-status');
-
+const { status } = require("http-status");
+const { errorHandler } = require('./middlewares/error');
 
 dotenv.config();
 
@@ -35,7 +35,10 @@ app.use('/api', routes);
 
 // 404 error for any unknown api request
 app.use((req, res, next) => {
-    next(new ApiError(status.NOT_FOUND, 'Not found'));
+    next(new ApiError(status.NOT_FOUND, status[status.NOT_FOUND], 'Not Found'));
 });
+
+// error sanitizer
+app.use(errorHandler);
 
 module.exports = app;
