@@ -2,6 +2,10 @@
 
 @plugin "tailwindcss-animate";
 
+@plugin 'tailwind-scrollbar'{
+  nocompatible: true; 
+}
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
