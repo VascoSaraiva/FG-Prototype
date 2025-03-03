@@ -5,7 +5,7 @@ const narrativeValidation = require('../validations/narrative.validation');
 
 const router = express.Router();
 
-router.get('/elements', narrativeController.getNarrativeElements);
+router.get('/ingredients', narrativeController.getNarrativeIngredients);
 router.get('/moments', narrativeController.getNarrativeMoments);
 
 module.exports = router;

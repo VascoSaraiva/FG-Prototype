@@ -5,7 +5,7 @@ import Button from '@/components/shared/Button';
 import { Copy, RotateCw, LoaderCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
-const CodeBlock = ({ title = 'title', type, setType, setOpen, data, fetchStatus, status, error }) => {
+const CodeBlock = ({ title = 'title', type, setType, setOpen, data, fetchStatus, status, error, disabled }) => {
 
     const header = (
         <div className='flex font-medium items-center justify-between px-5 py-2 bg-neutral-950 text-neutral-400'>
@@ -39,8 +39,8 @@ const CodeBlock = ({ title = 'title', type, setType, setOpen, data, fetchStatus,
         setType(type)
     }
 
-    console.log(fetchStatus)
-    console.log(status)
+    // console.log(fetchStatus)
+    // console.log(status)
 
     return (
         <div className='flex flex-col rounded-md border-[0.5px] shadow-xs relative bg-black border-neutral-800 w-full h-full overflow-hidden'>
@@ -67,10 +67,10 @@ const CodeBlock = ({ title = 'title', type, setType, setOpen, data, fetchStatus,
             <div className='flex flex-col gap-2 mt-2 m-6 bg-background absolute left-0 right-0 bottom-0'>
                 <Button
                     onClick={handleClick}
-                    disabled={fetchStatus === 'fetching'}
+                    disabled={disabled}
                     variant='default'
                     size='xl'
-                    text='Generate new'
+                    text='Run prompt'
                 />
             </div>
 

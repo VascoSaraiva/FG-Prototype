@@ -1,3 +1,3 @@
-const Joi = require('joi');
+const { z } = require('zod');
 
 module.exports = {};

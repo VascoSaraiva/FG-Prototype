@@ -21,12 +21,13 @@ const Form = (props) => {
     });
 
 
-    const deepCloneChildren = (child, extraProps) => {
+    // This function is used to clone the children of the form (Inputs, Selects, etc...) and pass the 'form' object to them
+    const cloneWithProps = (child, extraProps) => {
         if (!React.isValidElement(child)) return child;
         const clonedChildren = child.props.children
             ? Children.map(child.props.children, nestedChild =>
-                  deepCloneChildren(nestedChild, extraProps)
-              )
+                cloneWithProps(nestedChild, extraProps)
+            )
             : child.props.children;
         return React.cloneElement(child, extraProps, clonedChildren);
     };
@@ -35,7 +36,7 @@ const Form = (props) => {
         <FormComponent {...form}>
             <form id={id} onSubmit={form.handleSubmit(onSubmit)} className={className}>
                 {Children.toArray(children).map(child =>
-                    deepCloneChildren(child, { form })
+                    cloneWithProps(child, { form })
                 )}
             </form>
         </FormComponent>

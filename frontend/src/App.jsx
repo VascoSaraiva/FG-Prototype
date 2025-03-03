@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import CodeBlock from '@/components/CodeBlock';
 import { ResizablePanelGroup, ResizableHandle, ResizablePanel } from './components/ui/resizable';
 import Dialog from '@/components/shared/Dialog';
@@ -6,44 +6,51 @@ import Button from '@/components/shared/Button';
 import Form from '@/components/shared/Form';
 import Input from '@/components/shared/Input';
 import { z } from "zod";
-import { ENDPOINTS } from '@/api/endpoints';
+import ENDPOINTS from '@/api/endpoints';
 import api from '@/api/axios';
 import { useQuery } from '@tanstack/react-query';
 
 function App() {
 
+    const [params, setParams] = useState({})
+
     const fetchInitiativeStructure = async () => {
         try {
-            const response = await api.get(ENDPOINTS.INITIATIVE.GET.STRUCTURE)
-            console.log('Fetched data:', response.data)
-            return response.data
+            const { data } = await api.get(ENDPOINTS.INITIATIVE.GET.STRUCTURE, { params })
+            console.log('Fetched data:', data)
+            return data
         } catch (error) {
             console.error('Error fetching data:', error)
             throw error
         }
     }
+
 
     const fetchNarrativeIngredients = async () => {
         try {
-            const response = await api.get(ENDPOINTS.NARRATIVE.GET.INGREDIENTS)
-            console.log('Fetched data:', response.data)
-            return response.data
+            const { data } = await api.get(ENDPOINTS.NARRATIVE.GET.INGREDIENTS, { params })
+            console.log('Fetched data:', data)
+            return data
         } catch (error) {
             console.error('Error fetching data:', error)
             throw error
         }
     }
 
+
     const fecthNarrativeMoments = async () => {
         try {
-            const response = await api.get(ENDPOINTS.NARRATIVE.GET.MOMENTS)
-            console.log('Fetched data:', response.data)
-            return response.data
+            const { data } = await api.get(ENDPOINTS.NARRATIVE.GET.MOMENTS, { params })
+            console.log('Fetched data:', data)
+            setParams({})
+            return data
         } catch (error) {
             console.error('Error fetching data:', error)
             throw error
         }
     }
+
+
 
     const {
         fetchStatus: initiativeStructureFetchStatus,
@@ -54,6 +61,7 @@ function App() {
     } = useQuery({
         queryKey: ['initiativeStructure'],
         queryFn: fetchInitiativeStructure,
+        enabled: false
     })
 
     const {
@@ -65,6 +73,7 @@ function App() {
     } = useQuery({
         queryKey: ['narrativeIngredients'],
         queryFn: fetchNarrativeIngredients,
+        enabled: false
     })
 
     const {
@@ -76,6 +85,7 @@ function App() {
     } = useQuery({
         queryKey: ['narrativeMoments'],
         queryFn: fecthNarrativeMoments,
+        enabled: false
     })
 
     const panels = [
@@ -101,13 +111,13 @@ function App() {
                 }).optional(),
             }),
             fields: (
-                <>
+                <div className='grid gap-6 py-4'>
                     <Input name='typology' label='Typology' placeholder='Ex: Concurso' />
                     <Input name='objective' label='Objective' placeholder='Tornar o espaço da escola mais sustentável.' />
                     <Input name='area' label='Areas' placeholder='Ex: [Ciências, Biologia, Atividade Física]' />
                     <Input name='education' label='Educational Level' placeholder='Ex: Ensino Superior' />
                     <Input name='player' label='Player Type' placeholder='Ex: Killer' />
-                </>
+                </div>
             ),
             query: {
                 fetchStatus: initiativeStructureFetchStatus,
@@ -120,7 +130,7 @@ function App() {
             error: initiativeStructureError,
             refetch: initiativeStructureRefetch,
             status: initiativeStructureStatus,
-            fetchStatus: initiativeStructureFetchStatus
+            fetchStatus: initiativeStructureFetchStatus,
         },
         {
             title: 'Narrative Ingredients',
@@ -137,7 +147,7 @@ function App() {
             error: narrativeIngredientsError,
             refetch: narrativeIngredientsRefetch,
             status: narrativeIngredientsStatus,
-            fetchStatus: narrativeIngredientsFetchStatus
+            fetchStatus: narrativeIngredientsFetchStatus,
         },
         {
             title: 'Story Moments',
@@ -153,7 +163,7 @@ function App() {
             error: narrativeMomentsError,
             refetch: narrativeMomentsRefetch,
             status: narrativeMomentsStatus,
-            fetchStatus: narrativeMomentsFetchStatus
+            fetchStatus: narrativeMomentsFetchStatus,
         }
     ]
 
@@ -163,9 +173,9 @@ function App() {
     const currentPanel = panels.find(panel => panel.type === type)
 
     const onSubmit = (data) => {
-        console.log(data)
         setOpen(false)
-        currentPanel.refetch()
+        setParams(data)
+        setTimeout(() => currentPanel.refetch(), 0)
     }
 
     const onClick = () => {
@@ -173,6 +183,18 @@ function App() {
         currentPanel.refetch()
     }
 
+    console.log(initiativeStructureFetchStatus, initiativeStructureStatus)
+
+    const checkDisabled = (type) => {
+        switch (type) {
+            case 'i':
+                return false
+            case 'n':
+                return initiativeStructureStatus !== 'success' || panels.some(panel => panel.fetchStatus === 'fetching')
+            case 'm':
+                return initiativeStructureStatus !== 'success' || narrativeIngredientsStatus !== 'success' || panels.some(panel => panel.fetchStatus === 'fetching')
+        }
+    }
 
     return (
         <>
@@ -180,8 +202,7 @@ function App() {
             <ResizablePanelGroup direction='horizontal'>
 
                 {panels.map((panel, index) => (
-                    <>
-
+                    <Fragment key={index}>
                         <ResizablePanel className='px-6 flex'>
                             <div className='flex flex-col flex-1 overflow-hidden'>
                                 <CodeBlock
@@ -193,12 +214,13 @@ function App() {
                                     status={panel.status}
                                     error={panel.error}
                                     setOpen={setOpen}
+                                    disabled={checkDisabled(panel.type)}
                                 />
                             </div>
                         </ResizablePanel>
 
                         {index < panels.length - 1 && <ResizableHandle withHandle />}
-                    </>
+                    </Fragment>
                 ))}
 
             </ResizablePanelGroup>
@@ -216,16 +238,14 @@ function App() {
                         defaultValues={{}}
                         onSubmit={onSubmit}
                     >
-                        <div className='grid gap-6 py-4'>
-                            {currentPanel.fields}
-                        </div>
+                        {currentPanel.fields}
                     </Form>
                 )}
                 footer={
                     <div className='grid w-full mt-1'>
                         <Button
-                            onClick={!currentPanel.form && onClick}
-                            form={currentPanel.form && 'generate-prompt'}
+                            onClick={!currentPanel.form ? onClick : undefined}
+                            form={currentPanel.form ? 'generate-prompt' : undefined}
                             type={currentPanel.form ? 'submit' : 'button'}
                             text='Generate now'
                         />

@@ -19,4 +19,4 @@ const ENDPOINTS = {
     }
 }
 
-export { ENDPOINTS }
+export default ENDPOINTS
