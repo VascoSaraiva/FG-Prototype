@@ -9,6 +9,7 @@ import { z } from "zod";
 import ENDPOINTS from '@/api/endpoints';
 import api from '@/api/axios';
 import { useQuery } from '@tanstack/react-query';
+import Select from '@/components/shared/Select';
 
 function App() {
 
@@ -103,8 +104,8 @@ function App() {
                 education: z.string().min(2, {
                     message: "Education level must be at least 2 characters.",
                 }).optional(),
-                player: z.string().min(2, {
-                    message: "Player type must be at least 2 characters.",
+                player: z.enum(['achiever', 'explorer', 'socializer', 'killer'], {
+                    message: "Player must be one of the following: Achiever, Explorer, Socializer, Killer.",
                 }).optional(),
                 objective: z.string().min(2, {
                     message: "Objective must be at least 2 characters.",
@@ -116,7 +117,12 @@ function App() {
                     <Input name='objective' label='Objective' placeholder='Tornar o espaço da escola mais sustentável.' />
                     <Input name='area' label='Areas' placeholder='Ex: [Ciências, Biologia, Atividade Física]' />
                     <Input name='education' label='Educational Level' placeholder='Ex: Ensino Superior' />
-                    <Input name='player' label='Player Type' placeholder='Ex: Killer' />
+                    <Select name='player' label='Player Type' placeholder='Ex: Killer' items={{
+                        achiever: 'Achiever',
+                        explorer: 'Explorer',
+                        socializer: 'Socializer',
+                        killer: 'Killer',
+                    }} />
                 </div>
             ),
             query: {
@@ -175,6 +181,7 @@ function App() {
     const onSubmit = (data) => {
         setOpen(false)
         setParams(data)
+        console.log(data)
         setTimeout(() => currentPanel.refetch(), 0)
     }
 

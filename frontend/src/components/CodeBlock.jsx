@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 const CodeBlock = ({ title = 'title', type, setType, setOpen, data, fetchStatus, status, error, disabled }) => {
 
     const header = (
-        <div className='flex font-medium items-center justify-between px-5 py-2 bg-neutral-950 text-neutral-400'>
+        <div className='flex font-medium items-center justify-between px-5 py-2 text-neutral-400'>
             <p className='text-sm'>{title}</p>
             <div className='flex gap-2'>
 

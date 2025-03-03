@@ -24,7 +24,6 @@ const Input = (props) => {
         type
     } = props
 
-
     return (
         <>
             <FormField
@@ -54,10 +53,8 @@ const Input = (props) => {
                         </FormItem>
                     )
                 }}
-            >
-            </FormField>
+            />
         </>
-
     )
 }
 
