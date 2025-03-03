@@ -4,7 +4,8 @@ const ApiError = require('../utils/ApiError');
 
 const {
     endpoint,
-    token
+    token,
+    defaultOptions
 } = config.AI
 
 const client = new OpenAI({
@@ -12,13 +13,6 @@ const client = new OpenAI({
     apiKey: token,
 });
 
-const defaultOptions = {
-    temperature: 1.15,
-    top_p: 1.0,
-    max_tokens: 1000,
-    model: 'gpt-4o-mini',
-    max_tokens: 5000
-}
 
 /**
  * Calls the OpenAI API to generate a response.

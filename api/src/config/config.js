@@ -15,7 +15,7 @@ const envVarsSchema = z.object({
 }).passthrough();
 
 // Zod validates process.env against envVarsSchema. Throws an error if the validation fails.
-const {data, success, error} = envVarsSchema.safeParse(process.env);
+const { data, success, error } = envVarsSchema.safeParse(process.env);
 
 if (error) {
     throw new ApiError(status.INTERNAL_SERVER_ERROR, 'Invalid environment variables', { errors: error.errors });
@@ -27,6 +27,12 @@ module.exports = {
     AI: {
         token: data.GITHUB_TOKEN,
         endpoint: data.AZURE_ENDPOINT,
+        defaultOptions: {
+            temperature: 1,
+            top_p: 1.0,
+            max_tokens: 5000,
+            model: 'gpt-4o-mini',
+        }
     },
     mongoose: {
         url: data.MONGO_URL,
