@@ -10,7 +10,7 @@ import { ThemeProvider } from "@/components/ThemeProvider"
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-
+import { Toaster } from "@/components/ui/sonner"
 import Testing from '@/views/Testing';
 
 const env = import.meta.env.MODE // 'development' or 'production'
@@ -43,6 +43,8 @@ createRoot(document.getElementById('root')).render(
 
             </Routes>
           </BrowserRouter>
+          
+          <Toaster />
 
         </TooltipProvider>
       </ThemeProvider>
