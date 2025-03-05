@@ -8,29 +8,9 @@
             "properties": {
                 "genres": {
                     "type": "array",
-                    "description": "The story's genre. Choose between 1 and 2 genres that may complementary. Consider the story's target audience when choosing.",
+                    "description": "The story's genre. Choose between 1 and 2 genres that may complementary. Consider the story's target audience when choosing. Examples: 'Fantasia', 'Ficção Ciêntifica', 'Mistério', 'Noir', 'História', 'Distopia', 'Utopia', 'Terror', 'Romance', 'Comédia', 'Thriller', 'Western', 'Épico', 'Poesia', 'Fábula', 'Reportagem', 'Aventura', 'Realismo'.",
                     "items": {
-                        "type": "string",
-                        "enum": [
-                            "Fantasia",
-                            "Ficção Ciêntifica",
-                            "Mistério",
-                            "Noir",
-                            "História",
-                            "Distopia",
-                            "Utopia",
-                            "Terror",
-                            "Romance",
-                            "Comédia",
-                            "Thriller",
-                            "Western",
-                            "Épico",
-                            "Poesia",
-                            "Fábula",
-                            "Reportagem",
-                            "Aventura",
-                            "Realismo"
-                        ]
+                        "type": "string"
                     }
                 },
                 "concept": {
@@ -156,36 +136,18 @@
                             "type": "string",
                             "description": "The narrator's role in the narrative."
                         },
-                        "voices": {
+                        "voice": {
                             "type": "array",
-                            "description": "Choose up to 2 voices for the narrator. The tone should vary based on the audience. For younger audiences, the tone should be light, playful, and engaging, while for older or more mature audiences, a more serious, reflective, or suspenseful tone may be appropriate.",
+                            "description": "Choose up to 2 voices for the narrator. The tone should vary based on the audience. For younger audiences, the tone should be light, playful, and engaging, while for older or more mature audiences, a more serious, reflective, or suspenseful tone may be appropriate. Examples: 'Formal', 'Informal', 'Parcial', 'Imparcial', 'Frio', 'Poético', 'Cómico', 'Lírico', 'Dramático', 'Épico', 'Irritante', 'Sarcástico', 'Cínico', 'Satírico', 'Didático', 'Filosófico'.",
                             "items": {
-                                "type": "string",
-                                "enum": [
-                                    "Formal",
-                                    "Informal",
-                                    "Parcial",
-                                    "Imparcial",
-                                    "Frio",
-                                    "Poético",
-                                    "Cómico",
-                                    "Lírico",
-                                    "Dramático",
-                                    "Épico",
-                                    "Irritante",
-                                    "Sarcástico",
-                                    "Cínico",
-                                    "Satírico",
-                                    "Didático",
-                                    "Filosófico"
-                                ]
+                                "type": "string"
                             }
                         }
                     },
                     "required": [
                         "type",
                         "description",
-                        "voices"
+                        "voice"
                     ],
                     "additionalProperties": false
                 },

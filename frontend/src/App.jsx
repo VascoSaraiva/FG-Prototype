@@ -14,13 +14,13 @@ import Select from '@/components/shared/Select';
 function App() {
 
     const [initiativeFormData, setInitiativeFormData] = useState({})
-    const [narrativeIngredientsFormData, setNarrativeIngredientsFormData] = useState({})
-    const [narrativeMomentsFormData, setNarrativeMomentsFormData] = useState({})
+    const [ingredientsFormData, setIngredientsFormData] = useState({})
+    const [momentsFormData, setMomentsFormData] = useState({})
 
     const fetchInitiativeStructure = async () => {
 
         let params = {
-            ...initiativeFormData
+            ...JSON.parse(JSON.stringify(initiativeFormData)),
         }
 
         try {
@@ -38,14 +38,14 @@ function App() {
         let { typology, objective: { title }, areas, participants: { educationLevel, playerType } } = initiativeStructureData
 
         let params = {
-            ...narrativeIngredientsFormData,
+            ...JSON.parse(JSON.stringify(ingredientsFormData)),
             typology,
             objective: title,
             areas: areas.join(','),
             educationLevel,
             playerType
         }
-
+        
         try {
             const { data } = await api.get(ENDPOINTS.NARRATIVE.GET.INGREDIENTS, { params })
             console.log('Fetched data:', data)
@@ -58,26 +58,22 @@ function App() {
 
 
     const fecthNarrativeMoments = async () => {
-
         const { participants: { educationLevel } } = initiativeStructureData
 
-        const { genres, title, concept, protagonist, characters, scenario, narrator, voices, suspense } = narrativeIngredientsData
+        const { genres, title, concept, protagonist, characters, scenario, narrator, suspense } = narrativeIngredientsData
 
         let params = {
-            ...narrativeMomentsFormData,
             educationLevel,
             genres: genres.join(','),
             title,
             concept,
-            protagonist: `${protagonist.label}, ${protagonist.description}`,
-            characters: `${characters.label}, ${characters.description}`,
-            scenario: `${scenario.type}, ${scenario.label}, ${scenario.description}`,
+            protagonist: `${protagonist.label} -> ${protagonist.description}`,
+            characters: `${characters.label} -> ${characters.description}`,
+            scenario: `${scenario.type}, ${scenario.title} -> ${scenario.description}`,
             narrator: `${narrator.type}, ${narrator.description}`,
-            voices: voices.join(','),
+            voice: narrator.voice.join(','),
             suspense
         }
-
-        console.log('Params:', params)
 
         try {
             const { data } = await api.get(ENDPOINTS.NARRATIVE.GET.MOMENTS, { params })
@@ -178,7 +174,37 @@ function App() {
         {
             title: 'Narrative Ingredients',
             type: 'n',
-            form: false,
+            form: true,
+            schema: z.object({
+                concept: z.string().min(2, {
+                    message: "Concept must be at least 2 characters.",
+                }).optional(),
+                conflict: z.string().min(2, {
+                    message: "Conflict must be at least 2 characters.",
+                }).optional(),
+                genres: z.string().min(2, {
+                    message: "Genres must be at least 2 characters.",
+                }).optional(),
+                narrator: z.enum(['Heterodiegético', 'Homodiegético', 'Autodiegético'], {
+                    message: "Narrator must be one of the following: Heterodiegético, Homodiegético, Autodiegético.",
+                }).optional(),
+                voice: z.string().min(2, {
+                    message: "Voice must be at least 2 characters.",
+                }).optional(),
+            }),
+            fields: (
+                <div className='grid gap-6 py-4'>
+                    <Input name='concept' label='Concept' placeholder='E se...?' />
+                    <Input name='conflict' label='Main Conflict' placeholder='Resolver todos os enigmas antes do sol se auto-destruir.' />
+                    <Input name='genres' label='Genres' placeholder='Ex: [Ficção Ciêntifica, Noir]' />
+                    <Select name='narrator' label='Narrator Type' placeholder='Ex: Heterodiegético' items={{
+                        "Heterodiegético": 'Heterodiegético',
+                        "Homodiegético": 'Homodiegético',
+                        "Autodiegético": 'Autodiegético',
+                    }} />
+                    <Input name='voice' label='Narrator Voice' placeholder='Ex: [Informal, Cómico]' />
+                </div>
+            ),
             query: {
                 fetchStatus: narrativeIngredientsFetchStatus,
                 status: narrativeIngredientsStatus,
@@ -225,10 +251,10 @@ function App() {
                 setInitiativeFormData(data)
                 break
             case 'n':
-                setNarrativeIngredientsFormData(data)
+                setIngredientsFormData(data)
                 break
             case 'm':
-                setNarrativeMomentsFormData(data)
+                setMomentsFormData(data)
                 break
         }
 
@@ -236,6 +262,7 @@ function App() {
     }
 
     const onClick = () => {
+        console.log('click')
         setOpen(false)
         currentPanel.refetch()
     }

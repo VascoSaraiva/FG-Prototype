@@ -4,105 +4,115 @@
         "name": "narrative_moments_schema",
         "description": "Create a short story structured into 5 moments",
         "schema": {
-            "type": "array",
-            "description": "A short story structured into 5 moments. Each moment, like a traditional story arc, represents different stages of the story. Each moment has different purposes and tension levels. The moments and the overall story should strictly follow a logical sequence and a simple linear temporality. Each moment should be 350-500 words in length.",
-            "prefixItems": [
-                {
-                    "type": "object",
-                    "description": "Its a moment of 'Discovery'. This first moment should set up the protagonist(s), the scenario and focus on worldbuilding. The protagonist(s) description should not include any psychological or aesthetic details. Follow exclusively the information already provided.",
-                    "properties": {
-                        "title": {
-                            "type": "string",
-                            "description": "The title of the moment. Its the equivalent of a title for a chapter in a book."
+            "type": "object",
+            "description": "The main object that contains the story moments. Always structure it into 5 moments.",
+            "properties": {
+                "moments": {
+                    "type": "array",
+                    "description": "Each moment, like a traditional story arc, represents different stages of the story. Each moment has different purposes and tension levels. The moments and the overall story should strictly follow a logical sequence and a simple linear temporality. Each moment should be 200-250 words in length.",
+                    "items": {
+                        "moment_1": {
+                            "type": "object",
+                            "description": "Its a moment of 'Discovery'. This first moment should set up the protagonist(s), the scenario and focus on worldbuilding. The protagonist(s) description should not include any psychological or aesthetic details. Follow exclusively the information already provided.",
+                            "properties": {
+                                "title": {
+                                    "type": "string",
+                                    "description": "The title of the moment. Its the equivalent of a title for a chapter in a book."
+                                },
+                                "text": {
+                                    "type": "string",
+                                    "description": "The story text itself. Should be 350-500 words long. Strictly follow the narrator type and voice"
+                                }
+                            },
+                            "required": [
+                                "title",
+                                "text"
+                            ],
+                            "additionalProperties": false
                         },
-                        "text": {
-                            "type": "string",
-                            "description": "The story text itself. Should be 350-500 words long. Strictly follow the narrator type and voice"
-                        }
-                    },
-                    "required": [
-                        "title",
-                        "text"
-                    ],
-                    "additionalProperties": false
-                },
-                {
-                    "type": "object",
-                    "description": "Its a moment of 'Onboarding'. This second moment should introduce readers to the main conflict of the story, the one specified by the client. The tension level rises. The element of suspense should be presented here. The secondary character(s) should also be introduced in this moment.",
-                    "properties": {
-                        "title": {
-                            "type": "string",
-                            "description": "The title of the moment. Its the equivalent of a title for a chapter in a book."
+                        "moment_2": {
+                            "type": "object",
+                            "description": "Its a moment of 'Onboarding'. This second moment should introduce readers to the main conflict of the story, the one specified by the client. The tension level rises. The element of suspense should be presented here. The secondary character(s) should also be introduced in this moment.",
+                            "properties": {
+                                "title": {
+                                    "type": "string",
+                                    "description": "The title of the moment. Its the equivalent of a title for a chapter in a book."
+                                },
+                                "text": {
+                                    "type": "string",
+                                    "description": "The story text itself. Should be 350-500 words long. Strictly follow the narrator type and voice"
+                                }
+                            },
+                            "required": [
+                                "title",
+                                "text"
+                            ],
+                            "additionalProperties": false
                         },
-                        "text": {
-                            "type": "string",
-                            "description": "The story text itself. Should be 350-500 words long. Strictly follow the narrator type and voice"
-                        }
-                    },
-                    "required": [
-                        "title",
-                        "text"
-                    ],
-                    "additionalProperties": false
-                },
-                {
-                    "type": "object",
-                    "description": "Its a moment of 'Scaffolding'. This third moment should focus on action and progression of the plot. Avoid describe the actions in too much detail, only 'announce' that they will happen. You should write the actions in a way that the reader fills in the gaps with their imagination.",
-                    "properties": {
-                        "title": {
-                            "type": "string",
-                            "description": "The title of the moment. Its the equivalent of a title for a chapter in a book."
+                        "moment_3": {
+                            "type": "object",
+                            "description": "Its a moment of 'Scaffolding'. This third moment should focus on action and progression of the plot. Avoid describe the actions in too much detail, only 'announce' that they will happen. You should write the actions in a way that the reader fills in the gaps with their imagination.",
+                            "properties": {
+                                "title": {
+                                    "type": "string",
+                                    "description": "The title of the moment. Its the equivalent of a title for a chapter in a book."
+                                },
+                                "text": {
+                                    "type": "string",
+                                    "description": "The story text itself. Should be 350-500 words long. Strictly follow the narrator type and voice"
+                                }
+                            },
+                            "required": [
+                                "title",
+                                "text"
+                            ],
+                            "additionalProperties": false
                         },
-                        "text": {
-                            "type": "string",
-                            "description": "The story text itself. Should be 350-500 words long. Strictly follow the narrator type and voice"
-                        }
-                    },
-                    "required": [
-                        "title",
-                        "text"
-                    ],
-                    "additionalProperties": false
-                },
-                {
-                    "type": "object",
-                    "description": "Its a moment of 'Climax'. This fourth moment should be the peak of the story. The protagonist(s) should face the main conflict and the tension should be at its highest level. The end of this moment should leave the reader with a cliffhanger.",
-                    "properties": {
-                        "title": {
-                            "type": "string",
-                            "description": "The title of the moment. Its the equivalent of a title for a chapter in a book."
+                        "moment_4": {
+                            "type": "object",
+                            "description": "Its a moment of 'Climax'. This fourth moment should be the peak of the story. The protagonist(s) should face the main conflict and the tension should be at its highest level. The end of this moment should leave the reader with a cliffhanger.",
+                            "properties": {
+                                "title": {
+                                    "type": "string",
+                                    "description": "The title of the moment. Its the equivalent of a title for a chapter in a book."
+                                },
+                                "text": {
+                                    "type": "string",
+                                    "description": "The story text itself. Should be 350-500 words long. Strictly follow the narrator type and voice"
+                                }
+                            },
+                            "required": [
+                                "title",
+                                "text"
+                            ],
+                            "additionalProperties": false
                         },
-                        "text": {
-                            "type": "string",
-                            "description": "The story text itself. Should be 350-500 words long. Strictly follow the narrator type and voice"
+                        "moment_5": {
+                            "type": "object",
+                            "description": "Its a moment of 'Endgame'. This fifth and last moment should resolve the main conflict of the story. The element of suspense should finally be answered. The tension should decrease and the story should have a clear ending. The protagonist(s) should have a clear resolution to their conflict. At the same time, the ending shouldn't be too much dependent on the success and material achievements of the protagonist(s), as in 'the journey is more important than the destination'. The end should be positive and it can also be hopeful, moral, comic, revelatory, an appeal, a warning, etc...",
+                            "properties": {
+                                "title": {
+                                    "type": "string",
+                                    "description": "The title of the moment. Its the equivalent of a title for a chapter in a book."
+                                },
+                                "text": {
+                                    "type": "string",
+                                    "description": "The story text itself. Should be 350-500 words long. Strictly follow the narrator type and voice"
+                                }
+                            },
+                            "required": [
+                                "title",
+                                "text"
+                            ],
+                            "additionalProperties": false
                         }
-                    },
-                    "required": [
-                        "title",
-                        "text"
-                    ],
-                    "additionalProperties": false
-                },
-                {
-                    "type": "object",
-                    "description": "Its a moment of 'Endgame'. This fifth and last moment should resolve the main conflict of the story. The element of suspense should finally be answered. The tension should decrease and the story should have a clear ending. The protagonist(s) should have a clear resolution to their conflict. At the same time, the ending shouldn't be too much dependent on the success and material achievements of the protagonist(s), as in 'the journey is more important than the destination'. The end should be positive and it can also be hopeful, moral, comic, revelatory, an appeal, a warning, etc...",
-                    "properties": {
-                        "title": {
-                            "type": "string",
-                            "description": "The title of the moment. Its the equivalent of a title for a chapter in a book."
-                        },
-                        "text": {
-                            "type": "string",
-                            "description": "The story text itself. Should be 350-500 words long. Strictly follow the narrator type and voice"
-                        }
-                    },
-                    "required": [
-                        "title",
-                        "text"
-                    ],
-                    "additionalProperties": false
+                    }
                 }
-            ]
+            },
+            "required": [
+                "moments"
+            ],
+            "additionalProperties": false
         }
     }
 }
