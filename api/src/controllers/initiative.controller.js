@@ -6,26 +6,48 @@ const getInitiativeStructure = catchAsync(async (req, res) => {
 
     const { query } = req;
 
-    const hasQuery = Object.keys(query).length > 0
+    let message = 'Suggest a highly creative and engaging educational activity for a randomly chosen topic. The activity can be suitable for any learning environment (classroom, outdoor, virtual, etc.) and may require either minimal or more intensive preparation.';
 
-    let customMessage = `Design an engaging educational activity based on the following parameters:`
+    const queryLength = Object.keys(query).length
 
-    let customMessageProperties = `{
-        ${query.typology ? `typology: ${query.typology}` : ''},
-        ${query.objective ? `objective.verb ${query.objective.split(" ")[0]}` : ''},
-        ${query.objective ? `objective.title ${query.objective}` : ''},
-        ${query.areas ? `areas: [${query.areas}]` : ''},
-        ${query.educationLevel ? `participants.educationLevel: ${query.educationLevel}` : ''},
-        ${query.playerType ? `participants.playerType: ${query.playerType}` : ''},
-    }`;
+    const { typology, objective, areas, educationLevel, playerType, braindump } = query;
 
-    if(hasQuery){
-        initiativePrompts.structure.message = `${customMessage} ${customMessageProperties}`;
+    // When user only passes the braindump key
+    if (queryLength === 1 && braindump) {
+        message = `Create a highly creative and engaging educational activity structure. Consider the following context when generating the activity fields: ${braindump} `;
     }
 
-    console.log(initiativePrompts.structure.message);
+    // When user passes form data and not only a braindump
+    if (queryLength > 0 && !braindump) {
+        message = 'Suggest a highly creative and engaging educational activity structure considering that the following elements have already been provided for you and you must include them in your response exactly the same: ';
 
-    const response = await callOpenAI(initiativePrompts.structure);
+        if (typology) message += `typology: ${typology}; `;
+        if (objective) message += `objective.verb: ${objective.split(" ")[0]}; `;
+        if (objective) message += `objective.title: ${objective}; `;
+        if (areas) message += `areas: [${areas}]; `;
+        if (educationLevel) message += `participants.educationLevel: ${educationLevel}; `;
+        if (playerType) message += `participants.playerType: ${playerType}; `;
+    }
+
+    // When user passes form data and a braindump
+    if (queryLength > 1 && braindump) {
+        message = 'Suggest a highly creative and engaging educational activity structure considering that the following elements have already been provided for you and you must include them in your response exactly the same: ';
+
+        if (typology) message += `typology: ${typology}; `;
+        if (objective) message += `objective.verb: ${objective.split(" ")[0]}; `;
+        if (objective) message += `objective.title: ${objective}; `;
+        if (areas) message += `areas: [${areas}]; `;
+        if (educationLevel) message += `participants.educationLevel: ${educationLevel}; `;
+        if (playerType) message += `participants.playerType: ${playerType}; `;
+
+        message += ` Also consider the following information when generating the rest of activity fields. This is important contextual information that should guide your response: ${braindump} `;
+    }
+
+    const response = await callOpenAI({
+        ...initiativePrompts.structure,
+        message
+    });
+
     res.status(200).json(JSON.parse(response));
 });
 

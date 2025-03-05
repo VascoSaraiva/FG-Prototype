@@ -11,7 +11,7 @@ const narrativePrompts = {
 
         The narratives you create carry a fairy-tale-like quality, even when they belong to different genres, and the characters and concepts are simple yet universally appealing, resonating deeply with readers. Your ideas can range from light, family-friendly adventures, whimsical tales, or humorous stories, to darker, more serious narratives involving complex moral dilemmas, suspense, and exploration of deeper human or societal themes.
 
-        Your responses must always be written in European Portuguese (Portugal), using clear, concise language.`,
+        Your responses must always be written in European Portuguese (Portugal), using clear, concise language.  Don't write any cringe worthy text. Try to be very self-critical about that.`,
 
         message: `Your client is designing an educational activity and wants a fictional narrative story idea to serve as the background for the activity. Suggest highly creative narrative elements that could form the basis for a story. Consider the following activity characteristics when crafting the narrative elements: `,
 
@@ -42,24 +42,8 @@ const narrativePrompts = {
                         },
                         "protagonist": {
                             "type": "object",
+                            "description": "The main character(s) of the story. It must be a group entity representative of the readers. Examples: 'Caçadores de Fórmulas', 'Guaridões das Nuvens', 'Agentes Secretos'...",
                             "properties": {
-                                "type": {
-                                    "type": "string",
-                                    "anyOf": [
-                                        {
-                                            "const": "Participante",
-                                            "description": "The reader is the protagonist."
-                                        },
-                                        {
-                                            "const": "Grupo de Participantes",
-                                            "description": "A group of readers are the protagonists."
-                                        },
-                                        {
-                                            "const": "Personagem Ficcional",
-                                            "description": "An in universe fictional character."
-                                        }
-                                    ]
-                                },
                                 "label": {
                                     "type": "string",
                                     "description": "It should offer a clear, concise and short answer to the question: How is the protagonist recognized in the story universe?"
@@ -70,7 +54,6 @@ const narrativePrompts = {
                                 }
                             },
                             "required": [
-                                "type",
                                 "label",
                                 "description"
                             ],
@@ -224,7 +207,7 @@ const narrativePrompts = {
                     "properties": {
                         "moments": {
                             "type": "array",
-                            "description": "Each moment, like a traditional story arc, represents different stages of the story. Each moment has different purposes and tension levels. The moments and the overall story should strictly follow a logical sequence and a simple linear temporality. Each moment should be 250-300 words in length.",
+                            "description": "Each moment, like a traditional story arc, represents different stages of the story. Each moment has different purposes and tension levels. The moments and the overall story should strictly follow a logical sequence and a simple linear temporality. Each moment should be 50-80 words in length.",
                             "items": {
                                 "moment_1": {
                                     "type": "object",

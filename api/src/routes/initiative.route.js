@@ -5,7 +5,7 @@ const initiativeValidation = require('../validations/initiative.validation');
 
 const router = express.Router();
 
-router.get('/structure', validate(initiativeValidation.getInitiativeStructure), initiativeController.getInitiativeStructure)
+router.get('/structure', initiativeController.getInitiativeStructure)
 
 module.exports = router;
 

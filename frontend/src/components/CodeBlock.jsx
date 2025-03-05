@@ -3,6 +3,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { irBlack } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import Button from '@/components/shared/Button';
 import { Copy, RotateCw, LoaderCircle } from 'lucide-react';
+import copy from 'copy-to-clipboard';
 
 const CodeBlock = ({ title = 'title', type, setType, setOpen, data, fetchStatus, status, onRegenerate, disabled }) => {
 
@@ -11,7 +12,7 @@ const CodeBlock = ({ title = 'title', type, setType, setOpen, data, fetchStatus,
             <p className='text-sm'>{title}</p>
             <div className='flex gap-2'>
 
-                <Button
+                {/* <Button
                     onClick={onRegenerate}
                     variant='ghost'
                     size='sm'
@@ -19,7 +20,7 @@ const CodeBlock = ({ title = 'title', type, setType, setOpen, data, fetchStatus,
                     text='Regenerate'
                     tooltip={true}
                     tooltipContent='Regenerate response'
-                />
+                /> */}
 
                 <Button
                     variant='ghost'
@@ -27,6 +28,7 @@ const CodeBlock = ({ title = 'title', type, setType, setOpen, data, fetchStatus,
                     icon={<Copy />}
                     text='Copy'
                     tooltip={true}
+                    onClick={() => copy(JSON.stringify(data, null, 2))}
                     tooltipContent='Copy to clipboard'
                 />
 

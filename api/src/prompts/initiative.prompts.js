@@ -7,9 +7,7 @@ const {
 
 const initiativePrompts = {
     structure: {
-        system: `You are an expert in designing highly creative and unique educational activities. Your responses must always be written in European Portuguese (Portugal), not Brazilian Portuguese. Use clear and concise language while ensuring your tone is enthusiastic, and captivating. Always consider engagement, learning effectiveness, and ease of implementation in your activities.`,
-
-        message: `Suggest a highly creative and engaging educational activity for a randomly chosen topic. The activity can be suitable for any learning environment (classroom, outdoor, virtual, etc.) and may require either minimal or more intensive preparation.`,
+        system: `You are an expert in designing highly creative and unique educational activities. Your responses must always be written in European Portuguese (Portugal). Use clear and concise language while ensuring your tone is enthusiastic, and captivating. Don't write any cringe worthy text. Be critical of your ideas before suggesting them in the response. Always consider engagement, learning effectiveness, and ease of implementation in your activities.`,
 
         options: {
             ...defaultOptions,
@@ -83,7 +81,6 @@ const initiativePrompts = {
                                     "type": "string",
                                     "description": "The unit of time that will be used to measure the duration of the activity.",
                                     "enum": [
-                                        "horas",
                                         "dias",
                                         "semanas",
                                         "meses",
@@ -100,51 +97,93 @@ const initiativePrompts = {
                         "objective": {
                             "type": "object",
                             "properties": {
-                                "verb": {
-                                    "type": "string",
-                                    "description": "The action verb that is part of the the main objective of the activity. Examples: Criar, Desenvolver, Construir, Desenhar, Inovar, Investigar, Explorar, Aprender, Partilgar, Comunicar, Resolver, Descobrir, Conhecer, Experimentar, Organizar, Apresentar, Promover, Refletir, Pensar, Questionar, Analiasar, Compreender, Avaliar, Melhorar, Ajudar, Colaborar, Copperar, Participar, Integrar, Incluir, Envolver, Motivar, Inspirar, Desafiar, Estimular, Fomentar, Encorajar, Incentivar, Impulsionar, Potenciar..."
-                                },
                                 "title": {
                                     "type": "string",
-                                    "description": "The objective must be measurable and aligned with clear evaluation criteria. Participants should be able to assess the success of the objective. This objective should also answer the question: What is the main purpose of the activity? Write a concise sentence, starting with the chosen action verb. Also start tbe sentence with an uppercase letter then continue with lowercase."
+                                    "description": "The objective must be measurable and aligned with clear evaluation criteria. Participants should be able to assess the success of the objective. This objective should also answer the question: What is the main purpose of the activity? Write a concise sentence, starting with the chosen action verb. Also start tbe sentence with an uppercase letter then continue with lowercase. Example: 'Preservar a vida marinha na ria de Aveiro'."
+                                },
+                                "verb": {
+                                    "type": "string",
+                                    "description": "The action verb that is part of the the main objective of the activity. Examples: Criar, Desenvolver, Construir, Desenhar, Inovar, Investigar, Explorar, Aprender, Partilgar, Comunicar, Resolver, Descobrir, Conhecer, Experimentar, Organizar, Apresentar, Promover, Refletir, Pensar, Questionar, Analiasar, Compreender, Avaliar, Melhorar, Ajudar, Colaborar, Copperar, Participar, Integrar, Incluir, Envolver, Motivar, Inspirar, Desafiar, Estimular, Fomentar, Encorajar, Incentivar, Impulsionar, Potenciar, Preservar..."
                                 }
                             },
                             "required": [
-                                "verb",
-                                "title"
+                                "title",
+                                "verb"
                             ],
                             "additionalProperties": false
                         },
                         "tasks": {
                             "type": "array",
-                            "description": "Generate an array with the minimum of 5 sequential tasks, where each task is specific and measurable. Ensure that each task progressively builds on previous ones, helping participants gradually develop and apply their skills. For example, a task might involve researching a topic, and the next task could involve presenting findings or solving a related problem using the research. Ensure that each task is framed in a way that emphasizes practical execution and hands-on experience.",
+                            "description": "Generate an array with the minimum of 7 sequential tasks, where each task is specific and measurable. Ensure that each task progressively builds on previous ones, helping participants gradually develop and apply their skills. For example, a task might involve researching a topic, and the next task could involve presenting findings or solving a related problem using the research. Ensure that each task is framed in a way that emphasizes practical execution and hands-on experience.",
                             "items": {
                                 "type": "object",
                                 "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "description": "A sentence that clearly states what the participants must do. Incorporate only a single action verb at the beginning of the sentence. Don't combine combining multiple tasks into one. This field should directly answer the question: What will the participant do specifically? It MUST be something measurable and MUST involve an observable result. Start the title with an uppercase letter, followed by the rest in lowercase. Example: 'Investigar a flora e fauna da área local.'"
+                                    },
                                     "verb": {
                                         "type": "string",
                                         "description": "The action verb that defines the task and is used in the title."
-                                    },
-                                    "title": {
-                                        "type": "string",
-                                        "description": "A sentence that clearly states what the participants must do. Incorporate only a single action verb at the beginning of the sentence. Don't combine combining multiple tasks into one. This field should directly answer the question: What will the participant do specifically? It MUST be something measurable and MUST involve an observable result. Start with an uppercase letter, followed by the rest in lowercase."
                                     },
                                     "description": {
                                         "type": "string",
                                         "description": "A detailed description of the task that complements the title. Write in the future tense. Don't combine multiple tasks into one. It should provide clear and specific instructions of what the participants will have to do. Consider answering questions like: Does it have any pre-requisites? What are the expected results? How will the task be evaluated? What are the resources available? What are the constraints? Are there any deadlines?"
                                     },
+                                    "coreDrives": {
+                                        "type": "array",
+                                        "description": "Pick what you consider to be the essential Octalysis core drives that will motivate the participants to complete this task.",
+                                        "items": {
+                                            "type": "string",
+                                            "anyOf": [
+                                                {
+                                                    "const": "CD1: Epic Meaning & Calling",
+                                                    "description": "The belief that one is contributing to something greater than oneself."
+                                                },
+                                                {
+                                                    "const": "CD2: Development & Accomplishment",
+                                                    "description": "The desire to improve oneself, develop skills and overcome challenges."
+                                                },
+                                                {
+                                                    "const": "CD3: Empowerment of Creativity & Feedback",
+                                                    "description": "Involvement through creative exploration, experimentation and ability to test different approaches."
+                                                },
+                                                {
+                                                    "const": "CD4: Ownership & Possession",
+                                                    "description": "Control over something, including ownership of a process, project and/or institution."
+                                                },
+                                                {
+                                                    "const": "CD5: Social Influence & Relatedness",
+                                                    "description": "Social motivators, such as mentorship, social acceptance, feedback, companionship, competition, etc."
+                                                },
+                                                {
+                                                    "const": "CD6: Scarcity & Impatience",
+                                                    "description": "Exclusivity or the fear of missing out."
+                                                },
+                                                {
+                                                    "const": "CD7: Unpredictability & Curiosity",
+                                                    "description": "Interest by not knowing what will happen next."
+                                                },
+                                                {
+                                                    "const": "CD8: Loss & Avoidance",
+                                                    "description": "The desire to avoid negative consequences or prevent undesirable results."
+                                                }
+                                            ]
+                                        }
+                                    },
                                     "requirements": {
                                         "type": "array",
-                                        "description": "An array of up to 5 logistic requiremenents needed in order to provide the necessary conditions for the task to be performed by the participants. Keep the requirements minimal and directly relevant to the task. For example, 'Google Docs' might be essential for collaborative writing, but a general “papel e caneta” should be excluded unless it's unique to the tasks.",
+                                        "description": "An array of up to 5 logistic requiremenents needed in order to provide the necessary conditions for the task to be performed by the participants. Keep the requirements minimal and directly relevant to the task. For example, 'Google Docs' might be essential for collaborative writing, but a general 'material para anotações' should be excluded unless it's unique to the tasks. Always be specific when listing possible tool requirements.",
                                         "items": {
                                             "type": "string"
                                         }
                                     }
                                 },
                                 "required": [
-                                    "verb",
                                     "title",
+                                    "verb",
                                     "description",
+                                    "coreDrives",
                                     "requirements"
                                 ],
                                 "additionalProperties": false

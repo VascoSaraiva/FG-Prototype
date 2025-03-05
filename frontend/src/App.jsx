@@ -56,7 +56,6 @@ function App() {
         }
     }
 
-
     const fecthNarrativeMoments = async () => {
         const { participants: { educationLevel } } = initiativeStructureData
 
@@ -143,6 +142,9 @@ function App() {
                 objective: z.string().min(2, {
                     message: "Objective must be at least 2 characters.",
                 }).optional(),
+                braindump: z.string().min(2, {
+                    message: "Braindump must be at least 2 characters.",
+                }).optional(),
             }),
             fields: (
                 <div className='grid gap-6 py-4'>
@@ -156,6 +158,7 @@ function App() {
                         Socializer: 'Socializer',
                         killer: 'Killer',
                     }} />
+                    <Input name='braindump' label='Braindump' placeholder='Escreve qualquer informação que consideres relevante.' />
                 </div>
             ),
             query: {
@@ -191,18 +194,22 @@ function App() {
                 voice: z.string().min(2, {
                     message: "Voice must be at least 2 characters.",
                 }).optional(),
+                braindump: z.string().min(2, {
+                    message: "Braindump must be at least 2 characters.",
+                }).optional(),
             }),
             fields: (
                 <div className='grid gap-6 py-4'>
                     <Input name='concept' label='Concept' placeholder='E se...?' />
                     <Input name='conflict' label='Main Conflict' placeholder='Resolver todos os enigmas antes do sol se auto-destruir.' />
-                    <Input name='genres' label='Genres' placeholder='Ex: [Ficção Ciêntifica, Noir]' />
+                    <Input name='genres' label='Genres' placeholder='Ex: Ficção Ciêntifica, Noir' />
                     <Select name='narrator' label='Narrator Type' placeholder='Ex: Heterodiegético' items={{
                         "Heterodiegético": 'Heterodiegético',
                         "Homodiegético": 'Homodiegético',
                         "Autodiegético": 'Autodiegético',
                     }} />
-                    <Input name='voice' label='Narrator Voice' placeholder='Ex: [Informal, Cómico]' />
+                    <Input name='voice' label='Narrator Voice' placeholder='Ex: Informal, Cómico' />
+                    <Input name='braindump' label='Braindump' placeholder='Escreve qualquer informação que consideres relevante' />
                 </div>
             ),
             query: {
