@@ -1,0 +1,216 @@
+{
+    "type": "json_schema",
+    "json_schema": {
+        "name": "narrative_elements_schema",
+        "description": "Creates the key narrative elements that form the foundations for a short story.",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "genres": {
+                    "type": "array",
+                    "description": "The story's genre. Choose between 1 and 2 genres that may complementary. Consider the story's target audience when choosing.",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "Fantasia",
+                            "Ficção Ciêntifica",
+                            "Mistério",
+                            "Noir",
+                            "História",
+                            "Distopia",
+                            "Utopia",
+                            "Terror",
+                            "Romance",
+                            "Comédia",
+                            "Thriller",
+                            "Western",
+                            "Épico",
+                            "Poesia",
+                            "Fábula",
+                            "Reportagem",
+                            "Aventura",
+                            "Realismo"
+                        ]
+                    }
+                },
+                "concept": {
+                    "type": "string",
+                    "description": "The main concept that sets the basic foundation of the narrative. It should be based on famous cultural references, clichés, or tropes from pop culture, literature, or mythology. Consider the age and intellectual level of the intended target-audience. For younger audiences, keep the concept clear and family-friendly, whereas for older or more mature readers, you can explore more nuanced ideas. Choose a famous book, movie, TV show, game, or cultural reference as the basis and stick to it. Consider using well-known themes or clichés, but feel free to introduce unexpected combinations that relate to the typology of the activity provided and fit into the chosen story genres. Keep it one sentence only, in the form of a question starting with 'E se...?'. Examples: 'E se se utilizassem recursos naturais para escapar de uma ilha deserta numa situação de emergência?', 'E se se resolvessem enigmas matemáticos para encontrar um artefacto perdido?', 'E se se voltasse atrás no tempo para alertar a população dos perigos da poluição?', 'E se um grupo de astronautas se despenhasse num planeta remoto e tivesse de ser engenhoso para arranjar formas de sair de lá?', 'E se se usasse a ciência para criar 'feitiços' que resolvessem problemas do dia-a-dia?', 'E se aliens precisassem de organizar uma recolha para ajudar um planeta vizinho que está a passar por uma crise de recursos?'"
+                },
+                "conflict": {
+                    "type": "string",
+                    "description": "It should anwser the question: What is the main challenge or obstacle the protagonist will face in the story?"
+                },
+                "protagonist": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "anyOf": [
+                                {
+                                    "const": "Participante",
+                                    "description": "The reader is the protagonist."
+                                },
+                                {
+                                    "const": "Grupo de Participantes",
+                                    "description": "A group of readers are the protagonists."
+                                },
+                                {
+                                    "const": "Personagem Ficcional",
+                                    "description": "An in universe fictional character."
+                                }
+                            ]
+                        },
+                        "label": {
+                            "type": "string",
+                            "description": "It should offer a clear, concise and short answer to the question: How is the protagonist recognized in the story universe?"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The protagonist's role in the narrative. It should not include any psychological or aesthetic details. It can include descriptions of objects, clothes, or accessories essential for the story."
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "label",
+                        "description"
+                    ],
+                    "additionalProperties": false
+                },
+                "characters": {
+                    "type": "object",
+                    "description": "Secondary character(s) important to move the plot forward and support narrative themes.",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "Inimigo",
+                                "Necessitado",
+                                "Colaborador",
+                                "Inimigos",
+                                "Necesitados",
+                                "Colaboradores",
+                                "Inimiga",
+                                "Necessitada",
+                                "Colaboradora",
+                                "Inimigas",
+                                "Necessitadas",
+                                "Colaboradoras"
+                            ]
+                        },
+                        "label": {
+                            "type": "string",
+                            "description": "It should offer a clear, concise and short answer to the question: How is this character recognized in the story universe?"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "Keep it very simple, minimal and objective, focusing on the character's role in the story."
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "label",
+                        "description"
+                    ],
+                    "additionalProperties": false
+                },
+                "scenario": {
+                    "type": "object",
+                    "description": "The setting where the story takes place.",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "Localização",
+                                "Contexto Temporal"
+                            ]
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "It should offer a clear, concise and short answer to the question: How should the setting be referenced in the story?"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "A brief description of what should be the setting's role in the story."
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "title",
+                        "description"
+                    ],
+                    "additionalProperties": false
+                },
+                "narrator": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "Heterodiegético",
+                                "Homodiegético",
+                                "Autodiegético"
+                            ]
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The narrator's role in the narrative."
+                        },
+                        "voices": {
+                            "type": "array",
+                            "description": "Choose up to 2 voices for the narrator. The tone should vary based on the audience. For younger audiences, the tone should be light, playful, and engaging, while for older or more mature audiences, a more serious, reflective, or suspenseful tone may be appropriate.",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "Formal",
+                                    "Informal",
+                                    "Parcial",
+                                    "Imparcial",
+                                    "Frio",
+                                    "Poético",
+                                    "Cómico",
+                                    "Lírico",
+                                    "Dramático",
+                                    "Épico",
+                                    "Irritante",
+                                    "Sarcástico",
+                                    "Cínico",
+                                    "Satírico",
+                                    "Didático",
+                                    "Filosófico"
+                                ]
+                            }
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "description",
+                        "voices"
+                    ],
+                    "additionalProperties": false
+                },
+                "suspense": {
+                    "type": "string",
+                    "description": "Create a suspense question that will drive the reader's curiosity."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The story's title."
+                }
+            },
+            "required": [
+                "genres",
+                "concept",
+                "conflict",
+                "protagonist",
+                "characters",
+                "scenario",
+                "narrator",
+                "suspense",
+                "title"
+            ],
+            "additionalProperties": false
+        },
+        "strict": true
+    }
+}

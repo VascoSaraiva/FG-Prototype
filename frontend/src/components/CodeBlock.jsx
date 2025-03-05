@@ -3,9 +3,8 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { irBlack } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import Button from '@/components/shared/Button';
 import { Copy, RotateCw, LoaderCircle } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 
-const CodeBlock = ({ title = 'title', type, setType, setOpen, data, fetchStatus, status, error, disabled }) => {
+const CodeBlock = ({ title = 'title', type, setType, setOpen, data, fetchStatus, status, onRegenerate, disabled }) => {
 
     const header = (
         <div className='flex font-medium items-center justify-between px-5 py-2 text-neutral-400'>
@@ -13,6 +12,7 @@ const CodeBlock = ({ title = 'title', type, setType, setOpen, data, fetchStatus,
             <div className='flex gap-2'>
 
                 <Button
+                    onClick={onRegenerate}
                     variant='ghost'
                     size='sm'
                     icon={<RotateCw />}
@@ -53,12 +53,7 @@ const CodeBlock = ({ title = 'title', type, setType, setOpen, data, fetchStatus,
             {fetchStatus !== 'fetching' && status === 'success' && (
                 <div className='relative overflow-auto scrollbar scrollbar-w-2 scrollbar-h-2 scrollbar-thumb-neutral-700 scrollbar-thumb-rounded scrollbar-hover:bg-neutral-300'>
 
-                    <div className='sticky flex gap-2.5 flex-wrap top-2 left-0 right-0 px-4.5'>
-                        <Badge variant='secondary'>Concurso</Badge>
-                        <Badge variant='secondary'>Killers</Badge>
-                    </div>
-
-                    <SyntaxHighlighter customStyle={{ width: 'fit-data', overflow: 'unset', padding: '2rem 1.3rem 7rem 1.3rem' }} style={irBlack} language='json'>
+                    <SyntaxHighlighter customStyle={{ width: 'fit-data', overflow: 'unset', padding: '1rem 1.3rem 7rem 1.3rem' }} style={irBlack} language='json'>
                         {JSON.stringify(data, null, 2)}
                     </SyntaxHighlighter>
                 </div>

@@ -13,9 +13,16 @@ import Select from '@/components/shared/Select';
 
 function App() {
 
-    const [params, setParams] = useState({})
+    const [initiativeFormData, setInitiativeFormData] = useState({})
+    const [narrativeIngredientsFormData, setNarrativeIngredientsFormData] = useState({})
+    const [narrativeMomentsFormData, setNarrativeMomentsFormData] = useState({})
 
     const fetchInitiativeStructure = async () => {
+
+        let params = {
+            ...initiativeFormData
+        }
+
         try {
             const { data } = await api.get(ENDPOINTS.INITIATIVE.GET.STRUCTURE, { params })
             console.log('Fetched data:', data)
@@ -26,8 +33,19 @@ function App() {
         }
     }
 
-
     const fetchNarrativeIngredients = async () => {
+
+        let { typology, objective: { title }, areas, participants: { educationLevel, playerType } } = initiativeStructureData
+
+        let params = {
+            ...narrativeIngredientsFormData,
+            typology,
+            objective: title,
+            areas: areas.join(','),
+            educationLevel,
+            playerType
+        }
+
         try {
             const { data } = await api.get(ENDPOINTS.NARRATIVE.GET.INGREDIENTS, { params })
             console.log('Fetched data:', data)
@@ -40,17 +58,36 @@ function App() {
 
 
     const fecthNarrativeMoments = async () => {
+
+        const { participants: { educationLevel } } = initiativeStructureData
+
+        const { genres, title, concept, protagonist, characters, scenario, narrator, voices, suspense } = narrativeIngredientsData
+
+        let params = {
+            ...narrativeMomentsFormData,
+            educationLevel,
+            genres: genres.join(','),
+            title,
+            concept,
+            protagonist: `${protagonist.label}, ${protagonist.description}`,
+            characters: `${characters.label}, ${characters.description}`,
+            scenario: `${scenario.type}, ${scenario.label}, ${scenario.description}`,
+            narrator: `${narrator.type}, ${narrator.description}`,
+            voices: voices.join(','),
+            suspense
+        }
+
+        console.log('Params:', params)
+
         try {
             const { data } = await api.get(ENDPOINTS.NARRATIVE.GET.MOMENTS, { params })
             console.log('Fetched data:', data)
-            setParams({})
             return data
         } catch (error) {
             console.error('Error fetching data:', error)
             throw error
         }
     }
-
 
 
     const {
@@ -98,13 +135,13 @@ function App() {
                 typology: z.string().min(2, {
                     message: "Typology must be at least 2 characters.",
                 }).optional(),
-                area: z.string().min(2, {
+                areas: z.string().min(2, {
                     message: "Areas must be at least 2 characters.",
                 }).optional(),
-                education: z.string().min(2, {
+                educationLevel: z.string().min(2, {
                     message: "Education level must be at least 2 characters.",
                 }).optional(),
-                player: z.enum(['achiever', 'explorer', 'socializer', 'killer'], {
+                playerType: z.enum(['Achiever', 'Explorer', 'Socializer', 'Killer'], {
                     message: "Player must be one of the following: Achiever, Explorer, Socializer, Killer.",
                 }).optional(),
                 objective: z.string().min(2, {
@@ -115,12 +152,12 @@ function App() {
                 <div className='grid gap-6 py-4'>
                     <Input name='typology' label='Typology' placeholder='Ex: Concurso' />
                     <Input name='objective' label='Objective' placeholder='Tornar o espaço da escola mais sustentável.' />
-                    <Input name='area' label='Areas' placeholder='Ex: [Ciências, Biologia, Atividade Física]' />
-                    <Input name='education' label='Educational Level' placeholder='Ex: Ensino Superior' />
-                    <Select name='player' label='Player Type' placeholder='Ex: Killer' items={{
-                        achiever: 'Achiever',
-                        explorer: 'Explorer',
-                        socializer: 'Socializer',
+                    <Input name='areas' label='Areas' placeholder='Ex: Ciências, Biologia, Atividade Física' />
+                    <Input name='educationLevel' label='Educational Level' placeholder='Ex: Ensino Superior' />
+                    <Select name='playerType' label='Player Type' placeholder='Ex: Killer' items={{
+                        Achiever: 'Achiever',
+                        Explorer: 'Explorer',
+                        Socializer: 'Socializer',
                         killer: 'Killer',
                     }} />
                 </div>
@@ -180,8 +217,21 @@ function App() {
 
     const onSubmit = (data) => {
         setOpen(false)
-        setParams(data)
+
         console.log(data)
+
+        switch (type) {
+            case 'i':
+                setInitiativeFormData(data)
+                break
+            case 'n':
+                setNarrativeIngredientsFormData(data)
+                break
+            case 'm':
+                setNarrativeMomentsFormData(data)
+                break
+        }
+
         setTimeout(() => currentPanel.refetch(), 0)
     }
 
@@ -189,8 +239,6 @@ function App() {
         setOpen(false)
         currentPanel.refetch()
     }
-
-    console.log(initiativeStructureFetchStatus, initiativeStructureStatus)
 
     const checkDisabled = (type) => {
         switch (type) {
@@ -222,6 +270,7 @@ function App() {
                                     error={panel.error}
                                     setOpen={setOpen}
                                     disabled={checkDisabled(panel.type)}
+                                    onRegenerate={onClick}
                                 />
                             </div>
                         </ResizablePanel>
